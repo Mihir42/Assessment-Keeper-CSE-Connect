@@ -1,3 +1,4 @@
+import Header from './Header.jsx';
 import './App.scss';
 
 function App() {
@@ -39,11 +40,7 @@ function App() {
   return (
     
     <div className = "layout"> {/*Header, main, footer all in div*/}
-
-      <header>
-        <h1>Due dates application</h1>
-        <p className = "welcome">{userLoggedIn}</p> {/*Javascript variable to show who is logged in*/}
-      </header>
+      <Header userLoggedIn = {userLoggedIn}/> {/*Calling header code from Header.jsx, passing Javascript variable through header call */}
 
       <nav>
         <div className = "navItem"> {/*Nav bar has child div's which are nav items for each page */}
@@ -63,9 +60,11 @@ function App() {
         {
           assessments.map((assessment)=>{ //brackets contain parameter, points to code to be executed
             return(
-              <div className = "card" key = {assessment.AssessmentTitle}>
-                <p>{assessment.AssessmentTitle}</p> {/*key attached to the tags*/}
-                <p>Due date: {assessment.AssessmentDueDate}</p> {/*Each assessment date and title is wrapped in a div */}
+              <div className = "assessmentCard" key = {assessment.AssessmentModule}>
+                <div className = "card" key = {assessment.AssessmentTitle}>
+                  <p>{assessment.AssessmentTitle}</p> {/*key attached to the tags*/}
+                  <p>Due date: {assessment.AssessmentDueDate}</p> {/*Each assessment date and title is wrapped in a div */}
+                </div>
               </div>
             ) 
           })
