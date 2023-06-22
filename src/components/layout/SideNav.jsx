@@ -11,7 +11,7 @@ function SideNav() {
                 <NavLink to="/modules">Modules</NavLink>
             </div>
             <div className="navItem">
-                <NavLink to="/students">Students</NavLink>
+                <NavLink to="/assessment">Assessments</NavLink>
             </div>
         </nav>
     )
