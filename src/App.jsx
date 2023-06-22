@@ -1,6 +1,6 @@
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Layout from './components/layout/Layout.jsx';
 import Assessment from './components/views/Assessments.jsx';
-
 import './App.scss';
 
 function App() {
@@ -9,12 +9,16 @@ function App() {
  
 
   return (
-    <Layout userLoggedIn = {userLoggedIn}> {/*Header, nav and footer imported from Layout */}
+    <BrowserRouter>
+      <Layout userLoggedIn={userLoggedIn}> {/*Header, nav and footer imported from Layout */}
+        <Routes>
 
-        <Assessment /> {/*Children elements of Layout*/}
+          <Route path="/assessment" element={<Assessment/>} /> {/*Route to Assessment page*/}
 
+        </Routes>
 
-    </Layout>
+      </Layout>
+    </BrowserRouter>
   
   )
 

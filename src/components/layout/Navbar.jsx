@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import './navbar.scss';
 
 function Navbar() {
@@ -5,15 +6,15 @@ function Navbar() {
     return (
 
         <nav>
-        <div className = "navItem"> {/*Nav bar has child div's which are nav items for each page */}
-          <a to = "/">Home</a>
-        </div>
-        <div className = "navItem">
-          <a to = "/modules">Modules</a>
-        </div>
-        <div className = "navItem">
-          <a to = "/students">Assessments</a>
-        </div>
+          <div className="navItem"> {/*Nav bar has child div's which are nav items for each page */}
+            <NavLink to="/">Home</NavLink>
+          </div>
+          <div className="navItem">
+            <NavLink to="/modules">Modules</NavLink>
+          </div>
+          <div className="navItem">
+            <NavLink to="/assessment">Assessments</NavLink>
+          </div>
         </nav>
 
     );
