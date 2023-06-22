@@ -1,0 +1,16 @@
+nav {
+    width: auto;
+    padding: 15px;
+    background: powderblue;
+    display: block;
+
+    div.navItem {
+        color: white;
+        text-decoration: none;
+        margin: 5px 0px 5px 0px;
+
+        &:hover  {
+            color: black;
+        }
+    }
+}
