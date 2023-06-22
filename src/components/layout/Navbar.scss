@@ -1,0 +1,15 @@
+nav {
+    padding: 5px; //Styling for the nav bar
+    background: powderblue;
+    display: flex;
+    gap: 10px;
+
+    div.navItem a { //Styling for each nav item 
+        color: white;
+        text-decoration: none;
+
+        &:hover {
+            color: Black;
+        }
+    }
+}

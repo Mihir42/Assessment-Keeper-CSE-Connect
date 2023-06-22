@@ -1,0 +1,22 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
+
+*{
+    margin: 0px; //Every element has margin and padding of 0 until its overridden
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+div.layout { //Our div has children, reflect this in the css
+
+    background:red;
+    min-height: 100vh; //100% view hight
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr auto; //1fr for the main
+
+  main { 
+      padding: 20px; //Main tag, main section, holds the assesment cards
+      background: white;
+  }
+}
