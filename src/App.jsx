@@ -6,7 +6,6 @@ import './App.scss';
 function App() {
 
   const userLoggedIn = "Student"; //Logged in user
- 
 
   return (
     <BrowserRouter>

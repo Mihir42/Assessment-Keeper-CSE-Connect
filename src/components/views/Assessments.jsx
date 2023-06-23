@@ -43,39 +43,18 @@ function Assessment() {
     setAssessments(assessmentsArr); //Setting state variable to assessmentsArr
   }, []); //Empty array means it only runs once
 
-  function OrganiseByName() {
-    assessments.sort(function(a, b) { //Sorts assessments by name
-      var nameA = a.AssessmentTitle.toUpperCase(); // ignore upper and lowercase
-      var nameB = b.AssessmentTitle.toUpperCase(); // ignore upper and lowercase
-      if (nameA < nameB) { //Sorts in ascending order
-        return -1;
-      }
-      if (nameA > nameB) {
-        return 1;
-      }
-    
-      // names must be equal
-      return 0;
-    });
-  }
-
-  function GetAssessments() {
-    assessments.map((assessment)=>{ //brackets contain parameter, points to code to be executed
-      return(
-        <div className = "assessmentCard" key = {assessment.AssessmentModule}>
-          <Card>
-            <p>{assessment.AssessmentTitle}</p> {/*key attached to the tags*/}
-            <p>Due date: {assessment.AssessmentDueDate}</p> {/*Each assessment date and title is wrapped in a div */}
-          </Card>
-        </div>
-      )
-    })
+  {/*
+  TODO: Add filter function
+  TODO: Add sort by date function
+  TODO: Get from API provided by Alex and Henri
+  Was unable to implement these functions as I was unsure on how to approach this.
+  */
   }
 
   return (
       <>
       <h1>Assessments</h1>
-      <button className="filterBtn" onClick={OrganiseByName}>Filter</button>
+      <button className="filterBtn">Filter</button>
       <CardContainer> {/*Contains all the assessments */}
       {
         assessments.map((assessment)=>{ //brackets contain parameter, points to code to be executed
