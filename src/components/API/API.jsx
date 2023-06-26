@@ -1,6 +1,7 @@
-import {API_URL } from './apiAccess';
+import API_URL  from './apiAccess.jsx';
 
 export const API = {};
+
 
 API.get = (endpoint) => callFetch(endpoint, 'GET', null);
 API.post = (endpoint, data) => callFetch(endpoint, 'POST', data);

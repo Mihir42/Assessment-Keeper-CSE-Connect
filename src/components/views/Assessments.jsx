@@ -1,11 +1,11 @@
 import  { CardContainer, Card} from "../UI/Card.jsx";
-import { useState, useEffect } from 'react'; //Importing useState from react
+import API from "../API/API.jsx";
 import './Assessment.scss';
 
 
 function Assessment() {
 
-  const assessmentsArr = [ //Creating list of objects storing assessments details
+  const assessments = [ //Creating list of objects storing assessments details
   {
     AssessmentTitle: "Assessment 1",
     AssessmentModule: "Module 1",
@@ -37,11 +37,21 @@ function Assessment() {
     AssessmentDueDate: "01/01/2023",
   }]
 
+  function getModules()
+  {
+    const data = API.get();
+    return(data);
+
+  }
+
+  console.log(getModules());
+{/*}
   const [assessments, setAssessments] = useState([]); //Creating state variable, setting to empty array
 
   useEffect(() => { //UseEffect hook, runs when page loads
     setAssessments(assessmentsArr); //Setting state variable to assessmentsArr
   }, []); //Empty array means it only runs once
+*/}
 
   {/*
   TODO: Add filter function
@@ -50,6 +60,7 @@ function Assessment() {
   Was unable to implement these functions as I was unsure on how to approach this.
   */
   }
+
 
   return (
       <>
