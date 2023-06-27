@@ -39,12 +39,16 @@ function Assessment() {
 
   function getModules()
   {
-    const data = API.get();
+    const data = API.get("/api/tasks");
+    console.log(data);
     return(data);
-
   }
 
-  console.log(getModules());
+  getModules();
+
+
+
+
 {/*}
   const [assessments, setAssessments] = useState([]); //Creating state variable, setting to empty array
 
