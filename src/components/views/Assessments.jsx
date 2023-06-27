@@ -37,16 +37,13 @@ function Assessment() {
     AssessmentDueDate: "01/01/2023",
   }]
 
-  function getModules()
-  {
-    const data = API.get("/api/tasks");
-    console.log(data);
-    return(data);
-  }
+  const fetchModules = async () =>{
+    const outcome = await API.get("/api/modules");
+    if (outcome.success) console.log(outcome.response);  
 
-  getModules();
+  } 
 
-
+  fetchModules();
 
 
 {/*}
