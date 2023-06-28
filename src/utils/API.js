@@ -49,12 +49,17 @@ class APIWrapper {
   	* @returns Object of data
   */
 	async _sendRequest(endpoint, method = 'GET', data = {}) {
-		try {
-			const response = await fetch(`${this.API_URL}${endpoint}`, {
-				method,
+		let obj = { method };
+		if (method != 'GET') {
+			obj = {
+				...obj,
 				headers: { 'Content-type': 'application/json' },
 				body: JSON.stringify(data),
-			});
+			};
+		}
+
+		try {
+			const response = await fetch(`${this.url}${endpoint}`, obj);
 			const d = await response.json();
 			return d;
 		} catch (err) {
