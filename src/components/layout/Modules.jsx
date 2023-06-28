@@ -1,25 +1,19 @@
-export default function Navbar() {
+export default function Modules({ modules }) {
 	return (
 		<div className="card" style={{ minHeight:'80vh' }}>
-			<p className="card-header">Modules</p>
+			<h4 className="card-header" style={{ backgroundColor: 'white' }}>Modules</h4>
 			<div className="card-body">
-				<ul className="nav flex-column">
-					<li className="nav-item">
-						<a className="nav-link active" aria-current="page" href="#">Active</a>
-					</li>
-					<li className="nav-item">
-						<a className="nav-link" href="#">Link</a>
-					</li>
-					<li className="nav-item">
-						<a className="nav-link" href="#">Link</a>
-					</li>
-					<li className="nav-item">
-						<a className="nav-link disabled">Disabled</a>
-					</li>
-					<a className="nav-link disabled" style={{ textAlign:'center' }}>View all</a>
-				</ul>
+				<nav className="nav flex-column">
+					{modules.map(l => (
+						<a className="nav-link active" aria-current="page" href="#" key={l}>{l}</a>
+					))}
+					<a className="nav-link" style={{ textAlign:'center', textDecoration: 'underline' }}>View all</a>
+				</nav>
 			</div>
 		</div>
-
 	);
 }
+
+Modules.propTypes = {
+	modules: [],
+};

@@ -4,6 +4,9 @@ import Assessment from './components/views/Assessments.jsx';
 import './App.scss';
 
 function App() {
+
+	// Get assignmenst
+
 	const userLoggedIn = 'Student';
 	return (
 		<BrowserRouter>
