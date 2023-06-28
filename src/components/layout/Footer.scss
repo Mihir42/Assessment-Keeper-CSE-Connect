@@ -1,12 +1,12 @@
-footer { 
-    height: 50px;
-    padding: 0 5px;
-    background-color: powderblue;
-    display: flex;
-    align-items: center; //Helps elements align right in the center 
-    justify-content: center;
+footer {
+  height: 50px;
+  padding: 0 5px;
+  background-color: powderblue;
+  display: flex;
+  align-items: center; //Helps elements align right in the center
+  justify-content: center;
 
-    p.thankyou {
-        color: White;
-    }
+  p.thankyou {
+    color: White;
+  }
 }

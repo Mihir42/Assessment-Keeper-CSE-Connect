@@ -1,28 +1,23 @@
-import Header from './Header.jsx';
 import Navbar from './Navbar.jsx';
-import SideNav from './SideNav.jsx';
-import Footer from './Footer.jsx';
-import './Layout.scss';
+import Navbarv2 from './Navbar2.jsx';
+import Modules from './Modules.jsx';
+import Tasks from './Tasks.jsx';
 
-function Layout(props) //Responsible for how the page looks, sets page out, then sent to app.jsx
-{
-    return (
-    <div className = "layout"> {/*Contains our views*/}
-      <Header userLoggedIn={props.userLoggedIn}/> {/*Calling header code from Header.jsx, passing Javascript variable through header call */}
-      <div className="mainContainer">
-        <SideNav /> {/*Importing Navbar from Navbar.jsx */}
-        {/*Created Side Navbar to avoid making changes to the previous Navbar made.
-        Moved to the side and changed the layout to make it closer to the initial wire frame in the
-        first meeting.*/}
-        
-        <main>
-          {
-              props.children //Loads layout's children elements from App.jsx 
-          }
-        </main>
-      </div>
-    </div>
-    );
+export default function Layout() {
+	return (
+		<>
+			<Navbar />
+			<Navbarv2 />
+			<div className="container" style={{ paddingTop:'3vh' }}>
+				<div className="row">
+					<div className="col-lg-4">
+						<Modules />
+					</div>
+					<div className="col-lg-8">
+						<Tasks />
+					</div>
+				</div>
+			</div>
+		</>
+	);
 }
-
-export default Layout;
