@@ -3,7 +3,7 @@ import '../../styles/Tasks.scss';
 export default function Tasks({ tasks }) {
 	return (
 		<div className="card">
-			<p className="card-header">Assessment</p>
+			<h4 className="card-header">Assessment</h4>
 			<div className="card-body">
 				<div className="accordion" id="accordionExample">
 					{tasks.map(task => (
