@@ -16,7 +16,7 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: white;
   text-decoration: inherit;
 }
 a:hover {
@@ -61,7 +61,7 @@ button:focus, button:focus-visible {
     color: #213547;
     background-color: #ffffff;
   }
-  
+
   a:hover {
     color: #747bff;
   }

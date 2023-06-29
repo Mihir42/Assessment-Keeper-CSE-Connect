@@ -1,0 +1,18 @@
+.card {
+  min-height: 80vh;
+}
+
+.card-header {
+  background-color: white;
+}
+
+#viewAll {
+  text-align: center;
+  text-decoration: underline;
+}
+
+.nav-link.active:not(#title) {
+  background-color: #f5f6f8;
+  border-left: 2px solid #752a31;
+  color: black;
+}
