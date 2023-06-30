@@ -1,6 +1,10 @@
+import APIWrapper from '../../utils/API';
 import '../../styles/Tasks.scss';
 
+
 export default function Tasks({ tasks }) {
+	const api = new APIWrapper();
+	console.log(api.fetchData('/api/modules'));
 	return (
 		<div className="card">
 			<h4 className="card-header">Assessment</h4>

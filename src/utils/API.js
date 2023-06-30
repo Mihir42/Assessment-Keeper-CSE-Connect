@@ -15,6 +15,17 @@ class APIWrapper {
 		return this._sendRequest(endpoint, 'GET');
 	}
 
+	// Fetch method, use get method in the future to get from backend
+	async fetchData(endpoint) {
+		fetch(this.url + endpoint)
+			.then((response) => response.json())
+			.then((task) => {
+				const studentTask = (task['0']);
+				console.log(studentTask['code']);
+				console.log(studentTask['name']);
+			});
+	}
+
 	/**
   	* Send a POST request
   	* @param {string} endpoint endpoint the user is trying to access
