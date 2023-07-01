@@ -1,7 +1,4 @@
-import Header from './Header.jsx';
-import Navbar from './Navbar.jsx';
-import Modules from './Modules.jsx';
-import Tasks from './Tasks.jsx';
+import { Header, Navbar, Modules, Tasks } from '../layout';
 import '../../styles/Layout.scss';
 
 export default function Layout() {

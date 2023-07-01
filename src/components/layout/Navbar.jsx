@@ -10,13 +10,13 @@ export default function Navbar() {
 			<div className="container">
 				<ul className="nav nav-underline">
 					<li className="nav-item">
-						<a className={`nav-link ${active == 'Home' ? 'active' : ''}`} aria-current="page" href="#" id="title" onClick={() => setActive('Home')}>Home</a>
+						<button className={`nav-link ${active == 'Home' ? 'active' : ''}`} aria-current="page" href="#" id="title" onClick={() => setActive('Home')}>Home</button>
 					</li>
 					<li className="nav-item">
-						<a className={`nav-link ${active == 'Assignments' ? 'active' : ''}`} href="#" id="title" onClick={() => setActive('Assignments')}>Assignments</a>
+						<button className={`nav-link ${active == 'Assignments' ? 'active' : ''}`} href="#" id="title" onClick={() => setActive('Assignments')}>Assignments</button>
 					</li>
 					<li className="nav-item">
-						<a className={`nav-link ${active == 'Tasks' ? 'active' : ''}`} href="#" id="title" onClick={() => setActive('Tasks')}>Tasks</a>
+						<button className={`nav-link ${active == 'Tasks' ? 'active' : ''}`} href="#" id="title" onClick={() => setActive('Tasks')}>Tasks</button>
 					</li>
 				</ul>
 			</div>

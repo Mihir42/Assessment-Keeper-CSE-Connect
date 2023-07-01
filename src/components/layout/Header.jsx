@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import '../../styles/Header.scss';
 
 export default function Header({ student }) {
@@ -34,9 +35,9 @@ export default function Header({ student }) {
 }
 
 Header.propTypes = {
-	student: {
-		id: '',
-		firstName: '',
-		secondName: '',
-	},
+	student: PropTypes.shape({
+		id: PropTypes.number,
+		firstName: PropTypes.string,
+		secondName: PropTypes.string,
+	}),
 };
