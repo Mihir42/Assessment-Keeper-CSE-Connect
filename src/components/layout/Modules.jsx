@@ -21,7 +21,10 @@ export default function Modules({ modules, updateTasks }) {
 						style={{ margin: 0 }}
 					>{module}</button>
 				))}
-				<button className="nav-link" id="viewAll" onClick={() => updateTasks(assignments)}>View all</button>
+				<button className="nav-link" id="viewAll" onClick={() => {
+					setActive('all');
+					updateTasks(assignments);
+				}}>View all</button>
 			</nav>
 		</Card>
 	);
