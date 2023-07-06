@@ -9,8 +9,9 @@ export default function Assessments({ tasks }) {
 				{tasks.map(task => (
 					<div className="accordion-item" key={task.AssessmentID}>
 						<h2 className="accordion-header">
-							<button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target={`#collapse_${tasks.indexOf(task)}`} aria-expanded="false" aria-controls="collapseOne">
-								{task.AssessmentName} <span className="time">{new Date(task.AssessmentPublishdate).toLocaleDateString('en-GB')}</span>
+							<button className="accordion-button row" type="button" data-bs-toggle="collapse" data-bs-target={`#collapse_${tasks.indexOf(task)}`} aria-expanded="false" aria-controls="collapseOne" style={{ minWidth:'100%' }}>
+								<div className="col-sm-8">{task.AssessmentName}</div>
+								<div className="col-sm-3">{new Date(task.AssessmentPublishdate).toLocaleDateString('en-GB')}</div>
 							</button>
 						</h2>
 						<div id={`collapse_${tasks.indexOf(task)}`} className="accordion-collapse collapse" data-bs-parent="#accordionExample">
