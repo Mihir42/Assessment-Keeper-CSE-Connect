@@ -1,7 +1,13 @@
 .card {
-  min-height: 80vh;
+  height: 80vh;
 }
 
+.card-body {
+  overflow-y: scroll;
+}
+.card-body::-webkit-scrollbar {
+  display: none;
+}
 .card-header {
   background-color: white;
 }
