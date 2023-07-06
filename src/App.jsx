@@ -1,18 +1,14 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { Layout, Assessment } from './components/views';
+import Index from './components/views';
 import './App.scss';
 
 function App() {
-
-	// Get assignmenst
+	// Get assignments
 	return (
 		<BrowserRouter>
-			<Layout>
-				<Routes>
-					<Route path="/" element={<Layout/>} />
-					<Route path="/assessment" element={<Assessment/>} />
-				</Routes>
-			</Layout>
+			<Routes>
+				<Route path="/" element={<Index/>} />
+			</Routes>
 		</BrowserRouter>
 	);
 }

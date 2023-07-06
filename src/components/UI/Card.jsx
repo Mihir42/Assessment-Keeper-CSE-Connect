@@ -5,7 +5,7 @@ export function Card(props) {
 	return (
 		<div className="card">
 			<h4 className="card-header">{props.title}</h4>
-			<div className="card-body">
+			<div className="card-body" style={{ padding: '16px 0' }}>
 				{props.children}
 			</div>
 		</div>
