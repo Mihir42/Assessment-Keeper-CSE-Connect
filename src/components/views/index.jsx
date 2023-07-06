@@ -1,5 +1,5 @@
 import Layout from '../UI/Layout.jsx';
-import { Modules, Tasks } from '../layout';
+import { Modules, Assessments } from '../layout';
 import { useState } from 'react';
 import { assignments } from '../../assets/assignments.json';
 
@@ -14,7 +14,7 @@ export default function Home() {
 					<Modules modules={modules} updateTasks={setTasks} />
 				</div>
 				<div className="col-lg-8">
-					<Tasks tasks={tasks}/>
+					<Assessments tasks={tasks}/>
 				</div>
 			</div>
 		</Layout>
