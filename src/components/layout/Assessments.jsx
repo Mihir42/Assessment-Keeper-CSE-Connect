@@ -1,6 +1,6 @@
 import Card from '../UI/Card';
 import PropTypes from 'prop-types';
-import '../../styles/Tasks.scss';
+import '../../styles/Assessments.scss';
 
 export default function Assessments({ tasks }) {
 	return (
@@ -15,7 +15,8 @@ export default function Assessments({ tasks }) {
 						</h2>
 						<div id={`collapse_${tasks.indexOf(task)}`} className="accordion-collapse collapse" data-bs-parent="#accordionExample">
 							<div className="accordion-body">
-								{task.AssessmentTypeDescription}
+								<p>{task.AssessmentTypeDescription}</p>
+								<p>Page URL: <a href={task.AssessmentBriefURL}>{task.AssessmentBriefURL}</a></p>
 							</div>
 						</div>
 					</div>

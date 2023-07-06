@@ -16,16 +16,9 @@ export default function Header({ student }) {
 								<a className="nav-item text-dark nav-link" href="#">Login</a>
 							</li>
 							:
-							<li className="nav-item dropdown">
-								<a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<img src="https://placehold.co/32" width="32" height="32" className="rounded-circle" alt="User avatar" /> {student.secondName}, {student.firstName}
-								</a>
-								<div className="dropdown-menu dropdown-menu-end">
-									<a className="dropdown-item text-dark" href="/settings">Settings</a>
-									<div className="dropdown-divider"></div>
-									<a className="dropdown-item" href="#" id="logout">Logout</a>
-								</div>
-							</li>
+							<a className="nav-link" href="#">
+								<img src="https://placehold.co/32" width="32" height="32" className="rounded-circle" alt="User avatar" /> {student.firstName} {student.secondName}
+							</a>
 						}
 					</ul>
 				</div>
