@@ -1,0 +1,103 @@
+Due dates application 
+
+APP.JSX
+
+Imports BrowserRouter, route and routes from react router dom - used for react URL to load other pages
+Imports INDEX from view, adds index component to url "/"
+Route path leads to index
+Imports ASSESSMENTS component, assessment component called when "/assessments" in URL
+
+INDEX.JSX
+
+Imports Layout, Modules, Assessments, useState, and assignments.json
+Assignments.json returns an array of objects, the objects are assignments
+
+const modules = contains a set (array of unique values) 
+Inside the set contains an Array.map() method for assignments
+The map takes assignment object, pulls each assessment module name to be stored in the set
+The reason a set is used is because there are duplicate module names
+
+const [tasks, setTasks] = useState(assignments.filter(as => as.AssessmentModuleName == modules[0]));
+task -> stores assignments (current state) 
+setTasks -> used to update our state
+useState() -> Holds our inital state, takes assignments and filters them by the chosen module
+
+return ( <Layout> <Modules> <Assessments> )
+Returning Layout, Modules and Assesment components to create the Home page
+
+<Modules modules={modules} updateTasks={setTasks} />
+modules={modules} -> sending array of 4 modules to Modules component
+updateTasks={setTasks} -> stores setTasks method in variable updateTasks and sends to Modules component
+If module is changed, setTasks is used to change the assessments based on modules, more of that in Modules.jsx
+
+<Assessments tasks={tasks}/> 
+tasks={tasks} -> sends tasks (assignments) to assessments
+
+LAYOUT.JSX 
+
+
+
+MODULES.JSX
+
+function Modules({ modules, updateTasks})
+modules -> contains all 4 modules in array form
+updateTasks -> setTasks from index.jsx
+
+const [active, setActive] = useState(modules[0])
+active -> stores module chosen 
+setActive -> changes state (module) of active
+useState(modules[0]) -> intial state value of first module
+
+<Card title={'Modules'}>
+We are returning a card full of modules
+
+modules.map(module => 
+goes through array of 4 modules and selects each item
+
+<button className={`nav-link ${active == module ? 'active' : ''}`}
+Each module is being assigned a button 
+
+setActive(module) 
+changes state of active (module) to the module chosen by user
+ 
+updateTasks(assignments.filter(c => c.AssessmentModuleName == module));
+Goes through JSON assessments
+Filters assessment module name and checks if it equals to the module chosen by user
+Updates tasks (assessments) based on the module chosen by user
+I think this also updates the tasks in index.jsx since its using the updateTasks method 
+
+ASSESSMENTS.JSX
+
+Importing Card and PropTypes
+function Assessments ({tasks})
+tasks parameter is from index, containing the tasks from one module, updated everytime a new module is selected
+
+<> </> - Returning data in one component
+
+tasks.map(task =>()) 
+Takes each task (assessment) out of the array, applies logic to it 
+
+<div className="accordion" id="accordionExample" style={{ marginBottom: '5px', padding: '0 16px' }} key={task.AssessmentID}>
+Stores everything in accordion 
+
+<div className="accordion-item">
+each accordian has an item
+
+<h2 className="accordion-header">
+Inside the accordion is a header
+
+<div className="col-sm-8">{task.AssessmentName}</div>
+Takes each task, get assessment name from it and stores it in a div to be displayed
+col sm 8 is to do with css grid layout 
+
+<div className="col-sm-3">{new Date(task.AssessmentPublishdate).toLocaleDateString('en-GB')}</div>
+Takes each task, get the date, converts to a string and stores in a div to be displayed
+
+<div id={`collapse_${tasks.indexOf(task)}`} className="accordion-collapse collapse" data-bs-parent="#accordionExample">
+    <div className="accordion-body">
+	    <p>{task.AssessmentTypeDescription}</p>
+		<p>Page URL: <a href={task.AssessmentBriefURL}>{task.AssessmentBriefURL}</a></p>
+    </div>
+</div>
+when the accordian is collapsed, get the tasks description and task url 
+Store in div to be displayed
