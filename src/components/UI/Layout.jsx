@@ -1,11 +1,11 @@
 import { Header, Navbar } from '../layout';
 import PropTypes from 'prop-types';
-import '../../styles/Layout.scss';
+import './Layout.scss';
 
 export default function Layout(props) {
 	return (
 		<>
-			<Header student={{ id: 1, firstName: 'Ben', secondName: 'F' }}/>
+			<Header />
 			<Navbar />
 			<div className="container" id="container">
 				{props.children}

@@ -1,0 +1,115 @@
+html {
+  font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",
+  "Noto Sans","Liberation Sans",Arial,sans-serif,"Apple Color Emoji",
+  "Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+}
+
+[type=button]:not(:disabled), button:not(:disabled) {
+    cursor: pointer;
+}
+
+div {
+  display: block;
+}
+
+body {
+  background-color: #f5f6f8;
+  margin: 0;
+}
+
+.h5, h5 {
+  font-size: 1.25rem;
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 0.5rem;
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1.2;
+  color: inherit;
+}
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+li {
+  display: list-item;
+  text-align: center;
+}
+
+.container {
+  align-items: center;
+  display: flex;
+  flex-wrap: inherit;
+  justify-content: space-between;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 0.75rem;
+  width: 100%;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  margin-left: calc(-.5 * 1.5rem);
+  margin-right: calc(-.5 * 1.5rem);
+  min-width: 100%;
+  padding: 0 calc(1.5rem * .5)
+}
+
+@media screen and (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .row {
+    flex-direction: column;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+
+  .col-lg-4 {
+    flex: 0 0 auto;
+    width: 33.3%;
+  }
+  .col-lg-8 {
+    flex: 0 0 auto;
+    width: 66.7%;
+  }
+
+  .col-sm-3 {
+    flex: 0 0 auto;
+    width: 25%;
+  }
+
+  .col-sm-8 {
+    flex: 0 0 auto;
+    width: 74%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+
+}
+
+@media screen and (min-width: 1400px) {
+  .container {
+    max-width: 1320px;
+  }
+}

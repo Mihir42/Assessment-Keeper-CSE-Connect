@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Index from './components/views';
 import Assessments from './components/views/Assessments';
+import './App.scss';
 
 function App() {
 	return (

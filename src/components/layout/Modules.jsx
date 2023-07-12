@@ -1,7 +1,7 @@
 import Card from '../UI/Card';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import '../../styles/Modules.scss';
+import './Modules.scss';
 import { assignments } from '../../assets/assignments.json';
 
 export default function Modules({ modules, updateTasks }) {

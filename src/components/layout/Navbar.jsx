@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import '../../styles/Navbar.scss';
+import './Navbar.scss';
 
 export default function Navbar() {
 	// Set active state for first item

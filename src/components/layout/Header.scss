@@ -1,0 +1,33 @@
+.navbar-brand, .navbar-nav > .nav-link {
+  color: white;
+}
+
+.navbar, .navbar-nav {
+  align-items: center;
+  background-color: #ab1516;
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  overflow: hidden;
+  padding: 0.5rem 0;
+  position: relative;
+}
+
+.navbar-brand {
+  color: white;
+  font-size: 1.25rem;
+  margin-right: 1rem;
+  padding: 0.3125rem 0;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.nav-link {
+  display: block;
+  text-decoration: none;
+  background: 0 0;
+  padding: 0.5rem 1rem;
+  border: 0;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+  color: black;
+}

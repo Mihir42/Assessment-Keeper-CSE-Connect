@@ -4,11 +4,17 @@
   font-weight: bold;
   color: #ab1516;
 }
+
 #moduleLink {
   text-align: left;
 }
+
 .nav-link.active:not(#title) {
   background-color: #f5f6f8;
   border-left: 2px solid #752a31;
   color: black;
+}
+
+.flex-column {
+  flex-direction: column!important;
 }

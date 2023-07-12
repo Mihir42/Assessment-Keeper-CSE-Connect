@@ -1,13 +1,30 @@
 .card {
-  height: 80vh;
+  max-height: 75vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: 0.25rem;
+  margin: 10px;
 }
 
 .card-body {
+  flex: 1 1 auto;
+  padding: 16px 0;
   overflow-y: scroll;
 }
+
 .card-body::-webkit-scrollbar {
   display: none;
 }
+
 .card-header {
+  padding: 0.5rem 1rem;
+  margin-bottom: 0;
   background-color: white;
+  border-bottom: 1px solid rgba(0,0,0,.125);
 }

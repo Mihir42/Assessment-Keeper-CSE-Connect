@@ -1,0 +1,37 @@
+#navbar2 {
+  box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.5);
+  padding-bottom: 0px;
+  background-color: white;
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin-bottom: 0;
+  padding-left: 0;
+}
+
+.nav-underline {
+  column-gap: 1rem;
+}
+
+.nav-underline li {
+  padding-right: 25px;
+}
+
+.nav-underline > .nav-item > .nav-link.active {
+  border-bottom: 2px solid black;
+  color: black;
+}
+
+.nav-underline > .nav-item > .nav-link {
+  font-weight: 700;
+  border-bottom: 1px solid transparent;
+  display: block;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+  font-size: 14px;
+  color: grey;
+}
