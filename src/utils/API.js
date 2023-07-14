@@ -16,14 +16,8 @@ class APIWrapper {
 	}
 
 	// Fetch method, use get method in the future to get from backend
-	async fetchData(endpoint) {
-		fetch(this.url + endpoint)
-			.then((response) => response.json())
-			.then((task) => {
-				const studentTask = (task['0']);
-				console.log(studentTask['code']);
-				console.log(studentTask['name']);
-			});
+	fetchData() {
+		console.log('Test');
 	}
 
 	/**

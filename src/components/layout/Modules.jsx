@@ -33,4 +33,5 @@ export default function Modules({ modules, updateTasks }) {
 Modules.propTypes = {
 	modules: PropTypes.arrayOf(PropTypes.string),
 	updateTasks: PropTypes.func,
+	newModules: PropTypes.arrayOf(PropTypes.object),
 };
