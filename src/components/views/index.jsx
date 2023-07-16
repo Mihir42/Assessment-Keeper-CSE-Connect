@@ -22,11 +22,12 @@ export default function Home() {
 		const result = await response.json(); // JSON to js object 
 
 		const onlyModules = result.map((mod) => // get module name from object 
-			mod['ModuleName'],
+			mod['ModuleCode'] + ' ' + mod['ModuleName'],
 		);
 
 		setStudentMods(onlyModules);
 	};
+
 
 	// After content is rendered, run apiGet, runs after first render and every update
 	// This could be why the first render returns null
@@ -34,13 +35,12 @@ export default function Home() {
 		apiGet(modulesEndpoint);
 	}, [modulesEndpoint]);
 
-	console.log(studentMods);
 
 	return (
 		<Layout>
 			<div className="row">
 				<div className="col-lg-4">
-					<Modules modules={modules} updateTasks={setTasks} />
+					<Modules modules={studentMods} updateTasks={setTasks} />
 				</div>
 				<div className="col-lg-8">
 					<Assessments tasks={tasks}/>

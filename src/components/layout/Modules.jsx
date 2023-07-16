@@ -6,27 +6,29 @@ import { assignments } from '../../assets/assignments.json';
 
 export default function Modules({ modules, updateTasks }) {
 	// Set active state for first item
-	const [active, setActive] = useState(modules[0]);
+	const [active, setActive] = useState();
 
 	return (
-		<Card title={'Modules'}>
-			<nav className="nav flex-column">
-				{modules.map(module => (
-					<button className={`nav-link ${active == module ? 'active' : ''}`}
-						id="moduleLink" key={module}
-						onClick={() => {
-							setActive(module);
-							updateTasks(assignments.filter(c => c.AssessmentModuleName == module));
-						}}
-						style={{ margin: 0 }}
-					>{module}</button>
-				))}
-				<button className="nav-link" id="viewAll" onClick={() => {
-					setActive('all');
-					updateTasks(assignments);
-				}}>View all</button>
-			</nav>
-		</Card>
+		modules === null
+			? <p>No Modules</p>
+			: <Card title={'Modules'}>
+				<nav className="nav flex-column">
+					{modules.map(module => (
+						<button className={`nav-link ${active == module ? 'active' : ''}`}
+							id="moduleLink" key={module}
+							onClick={() => {
+								setActive(module);
+								updateTasks(assignments.filter(c => c.AssessmentModuleName == module));
+							}}
+							style={{ margin: 0 }}
+						>{module}</button>
+					))}
+					<button className="nav-link" id="viewAll" onClick={() => {
+						setActive('all');
+						updateTasks(assignments);
+					}}>View all</button>
+				</nav>
+			</Card>
 	);
 }
 
