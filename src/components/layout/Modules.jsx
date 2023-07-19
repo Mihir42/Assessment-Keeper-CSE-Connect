@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import './Modules.scss';
 import { assignments } from '../../assets/assignments.json';
 
-export default function Modules({ modules, updateTasks }) {
+export default function Modules({ modules, updateTasks, updateModuleCode }) {
 	// Set active state for first item
 	const [active, setActive] = useState();
 
@@ -39,6 +39,8 @@ export default function Modules({ modules, updateTasks }) {
 							id="moduleLink" key={module}
 							onClick={() => {
 								setActive(module);
+								const assessmentCode = module.slice(0, 6);
+								updateModuleCode(assessmentCode);
 								updateTasks(assignments.filter(c => c.AssessmentModuleName == module));
 							}}
 							style={{ margin: 0 }}
