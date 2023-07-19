@@ -2,9 +2,9 @@ import Card from '../UI/Card';
 import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 import './Modules.scss';
-import { assignments } from '../../assets/assignments.json';
+// import { assignments } from '../../assets/assignments.json';
 
-export default function Modules({ modules, updateTasks, updateModuleCode }) {
+export default function Modules({ updateModuleCode }) {
 	// Set active state for first item
 	const [active, setActive] = useState();
 
@@ -39,16 +39,15 @@ export default function Modules({ modules, updateTasks, updateModuleCode }) {
 							id="moduleLink" key={module}
 							onClick={() => {
 								setActive(module);
-								const assessmentCode = module.slice(0, 6);
+								const assessmentCode = module;
 								updateModuleCode(assessmentCode);
-								updateTasks(assignments.filter(c => c.AssessmentModuleName == module));
 							}}
 							style={{ margin: 0 }}
 						>{module}</button>
 					))}
 					<button className="nav-link" id="viewAll" onClick={() => {
 						setActive('all');
-						updateTasks(assignments);
+						updateModuleCode(1);
 					}}>View all</button>
 				</nav>
 			</Card>
