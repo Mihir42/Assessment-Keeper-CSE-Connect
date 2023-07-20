@@ -10,8 +10,15 @@ export default function Assessments({ moduleID }) {
 
 	// Function for fetching students assessments
 	const fetchStudentAssessments = async () => {
-		const response = await API.get('assessments');
-		setStudentAssessments(response);
+		try {
+			const response = await API.get('assessments');
+			if (response.error) throw new Error('Error');
+
+			setStudentAssessments(response);
+		} catch (err) {
+			console.log(err);
+			setStudentAssessments([]);
+		}
 	};
 
 	// Fetch student assessments on page load

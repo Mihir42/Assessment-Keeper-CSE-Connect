@@ -10,12 +10,19 @@ export default function Modules({ updateModuleCode }) {
 	const [studentModules, setStudentModules] = useState(null);
 
 	const apiGet = async () => {
-		const response = await API.get('modules/users/276');
-		const assessmentModules = response.map((mod) =>
-			mod['ModuleCode'] + ' ' + mod['ModuleName'],
-		);
+		try {
+			const response = await API.get('modules/users/276');
+			if (response.error) throw new Error('Error');
 
-		setStudentModules(assessmentModules);
+			const assessmentModules = response.map((mod) =>
+				mod['ModuleCode'] + ' ' + mod['ModuleName'],
+			);
+
+			setStudentModules(assessmentModules);
+		} catch (err) {
+			console.log(err);
+			setStudentModules([]);
+		}
 	};
 
 	useEffect(() => {
