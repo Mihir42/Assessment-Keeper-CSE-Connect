@@ -1,47 +1,36 @@
 import Card from '../UI/Card';
 import PropTypes from 'prop-types';
-import {useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import APIWrapper from '../../utils/API';
 import './Assessments.scss';
 
 export default function Assessments({ moduleID }) {
-	// console.log(moduleID);
+	const API = new APIWrapper();
+	const [studentAssessments, setStudentAssessments] = useState(null);
 
-	const apiURL = 'http://softwarehub.uk/unibase/api/';
-	const assessmentEndPoint = `${apiURL}/assessments`;
-
-	const[studentAssessments, setStudentAssessments] = useState(null);
-
-	const apiGet = async (endpoint) => {
-		const response = await fetch(endpoint);
-		const result = await response.json();
-		setStudentAssessments(result);
-
+	// Function for fetching students assessments
+	const fetchStudentAssessments = async () => {
+		const response = await API.get('assessments');
+		setStudentAssessments(response);
 	};
 
+	// Fetch student assessments on page load
 	useEffect(() => {
-		apiGet(assessmentEndPoint);
-	}, [assessmentEndPoint]);
+		fetchStudentAssessments();
+	}, []);
 
-	// I am sorry, I got really lazy here
-	let moduleAssessments = null;
-
-	if(moduleID !== null && studentAssessments !== null) {
+	// Filter based on input
+	let moduleAssessments = [];
+	if (moduleID == null) {
+		moduleAssessments = studentAssessments;
+	} else {
 		moduleAssessments = studentAssessments.filter(sa => sa.AssessmentModuleName == moduleID);
 	}
 
-	else if(moduleID === null && studentAssessments !== null) {
-		moduleAssessments = studentAssessments.filter(sa => sa.AssessmentModuleName == 'CI4250 Computing Fundamentals');
-
-	}
-
-	if(moduleID > 0) {
-		moduleAssessments = studentAssessments.filter(sa => sa.AssessmentID > 0);
-	}
-
 	return (
-		moduleAssessments === null
-			? <p>No Assessments</p>
-			: <Card title={'Assessment'}>
+		<Card title={'Assessment'}>
+			{moduleAssessments == null ?
+				<p>No Assessments</p> :
 				<>
 					{moduleAssessments.map(task => (
 						<div className="accordion" id="accordionExample" key={task.AssessmentID}>
@@ -63,10 +52,11 @@ export default function Assessments({ moduleID }) {
 						</div>
 					))}
 				</>
-			</Card>
+			}
+		</Card>
 	);
 }
 
 Assessments.propTypes = {
-	tasks: PropTypes.array,
+	moduleID: PropTypes.string,
 };

@@ -1,23 +1,17 @@
 import Card from '../UI/Card';
 import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
+import APIWrapper from '../../utils/API';
 import './Modules.scss';
-// import { assignments } from '../../assets/assignments.json';
 
 export default function Modules({ updateModuleCode }) {
-	// Set active state for first item
+	const API = new APIWrapper();
 	const [active, setActive] = useState();
+	const [studentModules, setStudentModules] = useState(null);
 
-	const apiURL = 'http://softwarehub.uk/unibase/api/';
-	const moduleEndPoints = `${apiURL}/modules/users/276`;
-
-	const[studentModules, setStudentModules] = useState(null);
-
-	const apiGet = async (endpoint) => {
-		const response = await fetch(endpoint);
-		const result = await response.json();
-
-		const assessmentModules = result.map((mod) =>
+	const apiGet = async () => {
+		const response = await API.get('modules/users/276');
+		const assessmentModules = response.map((mod) =>
 			mod['ModuleCode'] + ' ' + mod['ModuleName'],
 		);
 
@@ -25,15 +19,15 @@ export default function Modules({ updateModuleCode }) {
 	};
 
 	useEffect(() => {
-		apiGet(moduleEndPoints);
-	}, [moduleEndPoints]);
+		apiGet();
+	}, []);
 
 
 	return (
-		studentModules === null
-			? <p>Loading Modules</p>
-			: 	<Card title={'Modules'}>
-				<nav className="nav flex-column">
+		<Card title={'Modules'}>
+			{studentModules === null
+				? <p>Loading Modules</p>
+				:	<nav className="nav flex-column">
 					{studentModules.map(module => (
 						<button className={`nav-link ${active == module ? 'active' : ''}`}
 							id="moduleLink" key={module}
@@ -50,12 +44,12 @@ export default function Modules({ updateModuleCode }) {
 						updateModuleCode(1);
 					}}>View all</button>
 				</nav>
-			</Card>
+
+			}
+		</Card>
 	);
 }
 
 Modules.propTypes = {
-	modules: PropTypes.arrayOf(PropTypes.string),
-	updateTasks: PropTypes.func,
-	newModules: PropTypes.arrayOf(PropTypes.object),
+	updateModuleCode: PropTypes.func,
 };

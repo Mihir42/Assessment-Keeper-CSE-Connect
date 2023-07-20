@@ -15,11 +15,6 @@ class APIWrapper {
 		return this._sendRequest(endpoint, 'GET');
 	}
 
-	// Fetch method, use get method in the future to get from backend
-	fetchData() {
-		console.log('Test');
-	}
-
 	/**
   	* Send a POST request
   	* @param {string} endpoint endpoint the user is trying to access
