@@ -21,7 +21,7 @@ export default function Assessments({ moduleID }) {
 
 	// Filter based on input
 	let moduleAssessments = [];
-	if (moduleID == null) {
+	if (moduleID == null || moduleID == 1) {
 		moduleAssessments = studentAssessments;
 	} else {
 		moduleAssessments = studentAssessments.filter(sa => sa.AssessmentModuleName == moduleID);

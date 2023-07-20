@@ -41,7 +41,7 @@ export default function Modules({ updateModuleCode }) {
 					))}
 					<button className="nav-link" id="viewAll" onClick={() => {
 						setActive('all');
-						updateModuleCode(1);
+						updateModuleCode('1');
 					}}>View all</button>
 				</nav>
 
