@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import APIWrapper from '../../utils/API';
 import './Modules.scss';
 
-export default function Modules({ updateModuleCode }) {
+export default function Modules({ updateActiveModuleId }) {
 	const API = new APIWrapper();
 	const [active, setActive] = useState();
 	const [studentModules, setStudentModules] = useState(null);
@@ -41,14 +41,14 @@ export default function Modules({ updateModuleCode }) {
 							onClick={() => {
 								setActive(module);
 								const assessmentCode = module;
-								updateModuleCode(assessmentCode);
+								updateActiveModuleId(assessmentCode);
 							}}
 							style={{ margin: 0 }}
 						>{module}</button>
 					))}
 					<button className="nav-link" id="viewAll" onClick={() => {
 						setActive('all');
-						updateModuleCode('1');
+						updateActiveModuleId('1');
 					}}>View all</button>
 				</nav>
 
@@ -58,5 +58,5 @@ export default function Modules({ updateModuleCode }) {
 }
 
 Modules.propTypes = {
-	updateModuleCode: PropTypes.func,
+	updateActiveModuleId: PropTypes.func,
 };
