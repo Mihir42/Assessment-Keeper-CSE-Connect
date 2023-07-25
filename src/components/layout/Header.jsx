@@ -1,4 +1,6 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink} from 'react-router-dom';
+import ModuleLeader from '../views/ModuleLeader.jsx';
+
 import './Header.scss';
 
 export default function Header() {
@@ -7,7 +9,7 @@ export default function Header() {
 			<div className="container">
 				<NavLink to="/" className="navbar-brand"><i className="fa fa-calendar"></i> AssessKeeper</NavLink>
 				<li className="navbar-nav">
-					<a className="nav-link" href="#">Switch View</a>
+					<a className="nav-link" href="/moduleView">Module Leader View</a>
 				</li>
 			</div>
 		</nav>

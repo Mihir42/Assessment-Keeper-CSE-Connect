@@ -2,7 +2,6 @@ import Layout from '../UI/Layout.jsx';
 import { Modules, Assessments } from '../layout';
 import { useState } from 'react';
 
-
 export default function Home() {
 	const [activeModuleId, setActiveModuleId] = useState(null);
 
@@ -13,7 +12,7 @@ export default function Home() {
 					<Modules updateActiveModuleId={setActiveModuleId} />
 				</div>
 				<div className="col-lg-8">
-					<Assessments moduleID={activeModuleId}/>
+					<Assessments moduleID={activeModuleId} />
 				</div>
 			</div>
 		</Layout>
