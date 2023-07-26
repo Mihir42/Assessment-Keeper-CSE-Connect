@@ -4,21 +4,19 @@ import { useState, useEffect } from 'react';
 import APIWrapper from '../../utils/API';
 import './Modules.scss';
 
-export default function Modules({ updateActiveModuleId }) {
+export default function Modules({ activeModuleId, setActiveModuleId, moduleEndpoint }) {
+	// Initialisation ------------------------------
 	const API = new APIWrapper();
-	const [active, setActive] = useState();
+
+	// State ---------------------------------------
 	const [studentModules, setStudentModules] = useState(null);
 
-	const apiGet = async () => {
+	const getModules = async (endpoint) => {
 		try {
-			const response = await API.get('modules/users/276');
+			const response = await API.get(endpoint);
 			if (response.error) throw new Error('Error');
 
-			const assessmentModules = response.map((mod) =>
-				mod['ModuleCode'] + ' ' + mod['ModuleName'],
-			);
-
-			setStudentModules(assessmentModules);
+			setStudentModules(response);
 		} catch (err) {
 			console.log(err);
 			setStudentModules([]);
@@ -26,30 +24,26 @@ export default function Modules({ updateActiveModuleId }) {
 	};
 
 	useEffect(() => {
-		apiGet();
-	}, []);
+		getModules(moduleEndpoint);
+	}, [moduleEndpoint]);
 
-
+	// Handlers ------------------------------------
+	// View ----------------------------------------
 	return (
 		<Card title={'Modules'}>
 			{studentModules === null
 				? <p>Loading Modules</p>
 				:	<nav className="nav flex-column">
-					{studentModules.map(module => (
-						<button className={`nav-link ${active == module ? 'active' : ''}`}
-							id="moduleLink" key={module}
-							onClick={() => {
-								setActive(module);
-								const assessmentCode = module;
-								updateActiveModuleId(assessmentCode);
-							}}
+					{studentModules.map((module) => (
+						<button
+							className={`nav-link ${ module.ModuleID === activeModuleId ? 'active' : ''}`}
+							id="moduleLink"
+							key={module.ModuleID}
+							onClick={() => setActiveModuleId(module.ModuleID) }
 							style={{ margin: 0 }}
-						>{module}</button>
+						>{`${module.ModuleCode} ${module.ModuleName}`}</button>
 					))}
-					<button className="nav-link" id="viewAll" onClick={() => {
-						setActive('all');
-						updateActiveModuleId('1');
-					}}>View all</button>
+					<button className="nav-link" id="viewAll" onClick={() => setActiveModuleId(0) }>View all</button>
 				</nav>
 
 			}
@@ -58,5 +52,7 @@ export default function Modules({ updateActiveModuleId }) {
 }
 
 Modules.propTypes = {
-	updateActiveModuleId: PropTypes.func,
+	activeModuleId: PropTypes.number,
+	setActiveModuleId: PropTypes.func,
+	moduleEndpoint: PropTypes.string,
 };

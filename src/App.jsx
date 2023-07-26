@@ -1,16 +1,16 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Index from './components/views';
+import StudentDashboard from './components/views/StudentDashboard';
 import Assessments from './components/views/Assessments';
-import ModuleLeader from './components/views/ModuleLeader';
+import ModuleLeaderDashboard from './components/views/ModuleLeaderDashboard';
 import './App.scss';
 
 function App() {
 	return (
 		<BrowserRouter>
 			<Routes>
-				<Route path="/" element={<Index/>} />
+				<Route path="/" element={<StudentDashboard/>} />
 				<Route path="/assessments" element={<Assessments />} />
-				<Route path="/moduleView" element={<ModuleLeader />} />
+				<Route path="/moduleView" element={<ModuleLeaderDashboard />} />
 			</Routes>
 		</BrowserRouter>
 	);

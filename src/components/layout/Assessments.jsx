@@ -5,22 +5,47 @@ import { useState, useEffect } from 'react';
 import APIWrapper from '../../utils/API';
 import './Assessments.scss';
 
-export default function Assessments({ moduleID }) {
+export default function Assessments({ activeModuleId = 0 }) {
+	// Initialisation ------------------------------
 	const API = new APIWrapper();
-	const [studentAssessments, setStudentAssessments] = useState(null);
+	// console.log(`activeModuleID = [${activeModuleId}]`);
+	const assessmentEndpoint = activeModuleId === 0 ? 'assessments' : `assessments/module/${activeModuleId}`;
 
-	// Function for updating assessment list based on search query
-	function autoComplete(e) {
+	// State ---------------------------------------
+	const [assessments, setAssessments] = useState(null);
+
+	const getAssessments = async (endpoint) => {
+		try {
+			const response = await API.get(endpoint);
+			if (response.error) throw new Error('Error');
+			setAssessments(response);
+		} catch (err) {
+			console.log(err);
+			setAssessments([]);
+		}
+
+	};
+
+	// Fetch student assessments on page load
+	useEffect(() => {
+		getAssessments(assessmentEndpoint);
+	}, [assessmentEndpoint]);
+
+
+	// Handlers ------------------------------------
+	const handleFilter = () => {};
+	const handleSort = () => {};
+
+	// Helpers -------------------------------------
+	/* function filterAssessments(e) {
 		const search = e.target.value;
 		if (search) {
 			setStudentAssessments(studentAssessments.filter(c => c.moduleName.startsWith(search)));
 		} else {
 			fetchStudentAssessments();
 		}
-	}
-
-	// Function for sorting assessment list based on option
-	async function sortChange(e) {
+	} */
+	/* async function sortingAssessments(e) {
 		const sort = e.target.value;
 
 		switch (sort) {
@@ -35,56 +60,30 @@ export default function Assessments({ moduleID }) {
 			default:
 				setStudentAssessments(await fetchStudentAssessments());
 		}
-	}
+	} */
 
-	// Function for fetching students assessments
-	const fetchStudentAssessments = async (updateState = false) => {
-		try {
-			const response = await API.get('assessments');
-			if (response.error) throw new Error('Error');
-			if (updateState) setStudentAssessments(response);
-			return response;
-		} catch (err) {
-			console.log(err);
-			if (updateState) setStudentAssessments([]);
-			return [];
-		}
-	};
-
-	// Fetch student assessments on page load
-	useEffect(() => {
-		fetchStudentAssessments(true);
-	}, []);
-
-	// Filter based on input
-	let moduleAssessments = [];
-	if (moduleID == null || moduleID == 1) {
-		moduleAssessments = studentAssessments;
-	} else {
-		moduleAssessments = studentAssessments.filter(sa => sa.AssessmentModuleName == moduleID);
-	}
-
+	console.log(assessments);
+	// View ----------------------------------------
 	return (
 		<Card title={'Assessment'}>
 			<>
 				<div className="row">
 					<div className="col-sm-8">
-						<input type="text" className="form-control" placeholder="Search" onChange={(e) => autoComplete(e)}/>
+						<input type="text" className="form-control" placeholder="Search" onChange={(e) => handleFilter(e)}/>
 					</div>
 					<div className="col-sm-3">
-						<select name="sort" id="sortSelect" className="form-control" onChange={(e) => sortChange(e)}>
+						<select name="sort" id="sortSelect" className="form-control" onChange={(e) => handleSort(e)}>
 							<option value="relevant">Relevant</option>
 							<option value="oldest">Oldest</option>
 							<option value="newest">Newest</option>
 						</select>
 					</div>
 				</div>
-				{moduleAssessments == null || moduleAssessments.length == 0 ?
-					<p>No Assessments</p> :
+				{assessments == null || assessments.length == 0 || Array.isArray(assessments) == false
+					? <p>No Assessments uploaded for this module</p>
+					:
 					<>
-						{moduleAssessments.map(task => (
-							<Accordion task={task} id={task.AssessmentID} key={task.AssessmentID} />
-						))}
+						{assessments.map(assessment => <Accordion assessment={assessment} id={assessment.AssessmentID} key={assessment.AssessmentID} />)}
 					</>
 				}
 			</>
@@ -93,5 +92,5 @@ export default function Assessments({ moduleID }) {
 }
 
 Assessments.propTypes = {
-	moduleID: PropTypes.string,
+	activeModuleId: PropTypes.number,
 };
