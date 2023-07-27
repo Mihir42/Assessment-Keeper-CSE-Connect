@@ -62,7 +62,7 @@ export default function Assessments({ activeModuleId = 0 }) {
 		}
 	} */
 
-	console.log(assessments);
+
 	// View ----------------------------------------
 	return (
 		<Card title={'Assessment'}>
