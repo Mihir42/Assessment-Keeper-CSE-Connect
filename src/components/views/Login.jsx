@@ -10,12 +10,14 @@ export default function Login() {
 	};
 
 	console.log(userID);
+
 	return (
 		<>
 			<Header/>
 			<Card title='Login'>
 				<form onSubmit={handleSubmit}>
-					Enter your userID: <input type='text' id='firstName' value={userID} placeholder='User ID' onChange={(event) => setUserID(event.target.value)}/>
+					Enter your userID: <input type='text' id='firstName' value={userID} placeholder='User ID' ref={userID}/>
+					<button type = 'submit'>submit</button>
 				</form>
 			</Card>
 		</>

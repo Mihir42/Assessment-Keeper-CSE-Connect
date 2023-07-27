@@ -14,7 +14,7 @@ export default function Accordion({ assessment, id }) {
 				</h2>
 				<div id={`collapse_${id}`} className="accordion-collapse collapse" data-bs-parent="#accordionExample">
 					<div className="accordion-body">
-						<p>{assessment.AssessmenttypeDescription}</p>
+						<p>{assessment.AssessmentAssessmenttypeDescription}</p>
 						<p>Page URL: <a href={assessment.AssessmentBriefURL}>{assessment.AssessmentBriefURL}</a></p>
 					</div>
 				</div>
