@@ -23,9 +23,11 @@ export default function Modules({ activeModuleId, setActiveModuleId, moduleEndpo
 		}
 	};
 
+
 	useEffect(() => {
 		getModules(moduleEndpoint);
 	}, [moduleEndpoint]);
+
 
 	// Handlers ------------------------------------
 	// View ----------------------------------------
@@ -50,6 +52,7 @@ export default function Modules({ activeModuleId, setActiveModuleId, moduleEndpo
 		</Card>
 	);
 }
+
 
 Modules.propTypes = {
 	activeModuleId: PropTypes.number,

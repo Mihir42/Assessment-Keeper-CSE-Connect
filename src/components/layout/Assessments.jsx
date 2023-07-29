@@ -8,14 +8,16 @@ import './Assessments.scss';
 export default function Assessments({ activeModuleId = 0 }) {
 	// Initialisation ------------------------------
 	const API = new APIWrapper();
+	const assessmentEndpoint = activeModuleId === 0 ? 'assessments' : `assessments/module/${activeModuleId}`;
 
 	// State ---------------------------------------
 	const [assessments, setAssessments] = useState(null);
 
 	const getAssessments = async (returnValues = false) => {
 		try {
-			const response = await API.get(activeModuleId === 0 ? 'assessments' : `assessments/module/${activeModuleId}`);
+			const response = await API.get(assessmentEndpoint);
 			if (response.error) throw new Error('Error');
+			setAssessments(response);
 			return (returnValues) ? response : setAssessments(response);
 		} catch (err) {
 			console.log(err);
@@ -23,10 +25,11 @@ export default function Assessments({ activeModuleId = 0 }) {
 		}
 	};
 
+
 	// Fetch student assessments on page load
 	useEffect(() => {
 		getAssessments();
-	}, []);
+	}, [assessmentEndpoint]);
 
 
 	// Handlers ------------------------------------
