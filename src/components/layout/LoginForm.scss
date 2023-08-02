@@ -9,8 +9,28 @@
     flex-direction: column;
     gap: 20px;
 
-    .label, input, select {
+    .input, select {
         display: block;
-        width:50%;
+        width:100%;
     }
+
+    select,input {
+        width: 95%;
+        padding: 8px;
+        margin: 10px 0;
+        font-size: 100%;
+        border-radius: 0px;
+        border: 1px solid Gray;
+        background: White;
+    }
+
+    .loginFormSubmit {
+        width: 50%;
+        margin: 15px;
+        padding: 5px;
+    }
+
+    
+
+   
 }
