@@ -6,9 +6,9 @@ export default function Header() {
 	return (
 		<nav className="navbar navbar-expand-lg">
 			<div className="container">
-				<NavLink to="/" className="navbar-brand"><i className="fa fa-calendar"></i> AssessKeeper</NavLink>
+				<NavLink to="/studentView" className="navbar-brand"><i className="fa fa-calendar"></i> AssessKeeper</NavLink>
 				<li className="navbar-nav">
-					<a className="module-viewLink" href="/moduleView">Module Leader View</a>
+					<a className="module-viewLink" href="/">Module Leader login</a>
 				</li>
 			</div>
 		</nav>

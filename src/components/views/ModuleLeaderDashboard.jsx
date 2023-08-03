@@ -2,7 +2,7 @@ import Layout from '../UI/Layout.jsx';
 import { Modules, Assessments } from '../layout/index.js';
 import { useState } from 'react';
 
-export default function StudentDashboard() {
+export default function ModuleLeaderDashboard() {
 	// Initialisation ------------------------------
 	const loggedInUserID = 820;
 	const loggedInUserType = 1;
