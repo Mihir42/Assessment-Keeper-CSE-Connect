@@ -6,11 +6,17 @@ import './Accordion.scss';
 export default function Accordion({ assessment, id }) {
 	const [active, setActive] = useState(false);
 	const [showModal, setShowModal] = useState(false);
+	const validDateTime = (new Date(new Date(assessment.AssessmentPublishdate).getTime() - new Date(assessment.AssessmentPublishdate).getTimezoneOffset() * 60000).toISOString()).slice(0, -1);
 
 	return (
 		<>
 			<Modal id={id} title={`Edit: ${assessment.AssessmentName}`} show={showModal} setShowModal={setShowModal}>
-				<p>Hello this is some test data</p>
+				<form>
+					<label>Name:</label>
+					<input type="text" className="input-field" defaultValue={assessment.AssessmentName} />
+					<label>Publish Date:</label>
+					<input type="datetime-local" className="input-field" defaultValue={validDateTime}/>
+				</form>
 			</Modal>
 
 			<div className="accordion" id="accordionExample">
@@ -38,8 +44,7 @@ export default function Accordion({ assessment, id }) {
 
 Accordion.propTypes = {
 	id: PropTypes.number,
-	assessment: PropTypes.object,
-	/* assessment: PropTypes.shape({
+	assessment: PropTypes.shape({
 		AssessmentID: PropTypes.number,
 		AssessmentName: PropTypes.string,
 		AssessmentPublishdate: PropTypes.string,
@@ -50,5 +55,6 @@ Accordion.propTypes = {
 		AssessmentAssessmentTypeID: PropTypes.number,
 		AssessmentModuleName: PropTypes.string,
 		AssessmenttypeDescription: PropTypes.string,
-	}), */
+		AssessmentAssessmenttypeDescription: PropTypes.string,
+	}),
 };
