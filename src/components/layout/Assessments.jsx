@@ -3,7 +3,6 @@ import Accordion from '../UI/Accordion';
 import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 import APIWrapper from '../../utils/API';
-import './Assessments.scss';
 
 export default function Assessments({ activeModuleId = 0 }) {
 	// Initialisation ------------------------------
@@ -66,7 +65,7 @@ export default function Assessments({ activeModuleId = 0 }) {
 			<>
 				<div className="row" style={{ paddingLeft: '32px' }}>
 					<div className="col-sm-8">
-						<input type="text" className="form-control" placeholder="Search" onChange={(e) => handleFilter(e)}/>
+						<input type="text" className="input-field" placeholder="Search" onChange={(e) => handleFilter(e)}/>
 					</div>
 					<div className="col-sm-3">
 						<select name="sort" id="sortSelect" className="form-control" onChange={(e) => handleSort(e)}>
