@@ -1,0 +1,25 @@
+.loginCard {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 300px;
+    max-width: 60%;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 0.25rem;
+    margin: 50px auto;
+    padding: 16px;
+}
+
+.loginCard-header {
+    padding: 0.5rem 1rem;
+    margin-bottom: 0;
+    background-color: white;
+    border-bottom: 1px solid rgb(0,0,0,0.125);
+}
+
+.loginCard-body {
+    font-size: 12.5px;
+}
