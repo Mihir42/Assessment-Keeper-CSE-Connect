@@ -1,36 +1,17 @@
 .loginBox {
-    border: 1px solid Lightgray;
-    border-radius: 3px;
-    padding: 20px 20px;
-    margin: 40px auto;
-    height: auto;
-    width: 750px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  border: 1px solid Lightgray;
+  border-radius: 3px;
+  padding: 20px 20px;
+  margin: 40px auto;
+  height: auto;
+  width: 750px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 
-    .input, select {
-        display: block;
-        width:100%;
-    }
-
-    select,input {
-        width: 95%;
-        padding: 8px;
-        margin: 10px 0;
-        font-size: 100%;
-        border-radius: 0px;
-        border: 1px solid Gray;
-        background: White;
-    }
-
-    .loginFormSubmit {
-        width: 50%;
-        margin: 15px;
-        padding: 5px;
-    }
-
-    
-
-   
+  .loginFormSubmit {
+    width: 50%;
+    margin: 15px;
+    padding: 5px;
+  }
 }

@@ -13,7 +13,7 @@ export default function Navbar() {
 						<button className={`nav-link ${active == 'Home' ? 'active' : ''}`} id="title" onClick={() => setActive('Home')}>Home</button>
 					</li>
 					<li className="nav-item">
-						<button className={`nav-link ${active == 'Assignments' ? 'active' : ''}`} id="title" onClick={() => setActive('Assignments')}>Assignments</button>
+						<button className={`nav-link ${active == 'Assignments' ? 'active' : ''}`} id="title" onClick={() => setActive('Assignments')}>Favourite Assessments</button>
 					</li>
 					<li className="nav-item">
 						<button className={`nav-link ${active == 'Tasks' ? 'active' : ''}`} id="title" onClick={() => setActive('Tasks')}>Tasks</button>

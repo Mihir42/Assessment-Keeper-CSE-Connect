@@ -12,10 +12,10 @@ const intialLogin = {
 function LoginForm() {
 	// Initialisation --------------------
 
-    const API = new APIWrapper();
-    const navigate = new useNavigate();
-    const moduleLeaderEndpoint = 'modules/leader/820';
-    const tempPassword = 'Password1';
+  const API = new APIWrapper();
+  const navigate = new useNavigate();
+  const moduleLeaderEndpoint = 'modules/leader/820';
+  const tempPassword = 'Password1';
 
 	const conformance = {
 		html2js: {
@@ -31,22 +31,25 @@ function LoginForm() {
 	// State -----------------------------
 
 	const[login, setLogin] = useState(intialLogin);
-    const[moduleLeader, setModuleLeader] = useState(null);
+  const[moduleLeader, setModuleLeader] = useState(null);
 
-    const getModuleLeader = async (endpoint) => {
-        try {
-            const response = await API.get(endpoint);
-            if(response.error) throw new Error('error');
+  const getModuleLeader = async (endpoint) => {
+		setModuleLeader(820);
+		/*
+    try {
+      const response = await API.get(endpoint);
+      if(response.error) throw new Error('error');
 
-            setModuleLeader(response[0].ModuleLeaderID);
-        } catch (err) {
-            console.log(err);
-            setModuleLeader([]);
-        }
-    };
+      setModuleLeader(response[0].ModuleLeaderID);
+    } catch (err) {
+      console.log(err);
+      setModuleLeader('820');
+    }
+		*/
+	};
 
     useEffect(() => {
-        getModuleLeader(moduleLeaderEndpoint);
+      getModuleLeader(moduleLeaderEndpoint);
     }, [moduleLeaderEndpoint]);
 
 	// Handlers --------------------------
@@ -54,53 +57,32 @@ function LoginForm() {
 	const handleChange = (event) => {
 		const { name, value } = event.target;
 		setLogin({ ...login, [name]: conformance.html2js[name](value) });
-
 	};
 
-	const handleSubmit = () => {
-		console.log(`UserID=[${JSON.stringify(login)}]`);
-	};
-
-	const handleLogIn = () => {
-		if(login.UserID === moduleLeader && login.password == tempPassword) {
-            // console.log('Number entered ', login.UserID, 'ModuleLeaderID', moduleLeader);
-            return true;
-        } else { return false; }
-	};
+	// Check if details are correct
+	const handleLogIn = () => login.UserID == moduleLeader && login.password == tempPassword;
 
 	// View ------------------------------
 
 	return (
 		<div className="loginBox">
-			<Card title={'Login'}>
-				<label className='label'>
-                    User ID
-					<input
-						type="number"
-						name="UserID"
-						value={conformance.js2html['UserID'](login.UserID)}
-						onChange={handleChange}
-					/>
-				</label>
+		<Card title={'Login'}>
+			<>
+				<div className="mb-3">
+					<label htmlFor="UserID" className="form-label">UserID:</label>
+					<input type="email" className="input-field" name="UserID" id="UserID" defaultValue={conformance.js2html['UserID'](login.UserID)} onChange={handleChange} />
+				</div>
 
-				<label>
-                    Password
-					<input
-						type="text"
-						name="password"
-						value={conformance.js2html['password'](login.password)}
-						onChange={handleChange}
-					/>
-				</label>
+				<div className="mb-3">
+					<label htmlFor="password" className="form-label">Password:</label>
+					<input type="email" className="input-field" name="password" id="password" defaultValue={conformance.js2html['password'](login.UserID)} onChange={handleChange} />
+				</div>
 
-				<button className = "loginFormSubmit"
-					type= "button"
-					onClick={handleLogIn() === true
-                    ? navigate('/moduleView', { replace: true })
-                    : console.log('No')}>
-                    Login
+				<button className="loginFormSubmit"	type="button" onClick={() => handleLogIn() ? navigate('/moduleView', { replace: true }) : null }>
+					Login
 				</button>
-			</Card>
+			</>
+		</Card>
 		</div>
 	);
 }

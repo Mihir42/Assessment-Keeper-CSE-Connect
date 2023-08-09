@@ -1,5 +1,6 @@
 import Card from '../UI/Card';
-import Accordion from '../UI/Accordion';
+import StudentAssessmentAccordion from './StudentAssessmentAccordion';
+import LeaderAssessmentAccordion from './LeaderAssessmentAccordion';
 import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 import APIWrapper from '../../utils/API';
@@ -68,7 +69,7 @@ export default function Assessments({ activeModuleId = 0 }) {
 						<input type="text" className="input-field" placeholder="Search" onChange={(e) => handleFilter(e)}/>
 					</div>
 					<div className="col-sm-3">
-						<select name="sort" id="sortSelect" className="form-control" onChange={(e) => handleSort(e)}>
+						<select name="sort" id="sortSelect" className="input-field" onChange={(e) => handleSort(e)}>
 							<option value="relevant">Relevant</option>
 							<option value="oldest">Oldest</option>
 							<option value="newest">Newest</option>
@@ -80,7 +81,12 @@ export default function Assessments({ activeModuleId = 0 }) {
 					? <p>No Assessments uploaded for this module</p>
 					:
 					<>
-						{assessments.map(assessment => <Accordion assessment={assessment} id={assessment.AssessmentID} key={assessment.AssessmentID} />)}
+						{assessments.map(assessment => {
+							// TODO: REPLACE MATH.RANDOM with actual data
+							return Math.random() < 0.5 ?
+								<StudentAssessmentAccordion assessment={assessment} isFavourite={Math.random() < 0.5} key={assessment.AssessmentID} />
+								: <LeaderAssessmentAccordion assessment={assessment} key={assessment.AssessmentID} />;
+						})}
 					</>
 				}
 			</>
