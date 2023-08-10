@@ -15,7 +15,7 @@ export default function Modules({ activeModuleId, setActiveModuleId, moduleEndpo
 		try {
 			const response = await API.get(endpoint);
 			if (response.error) throw new Error('Error');
-
+			console.log('respdfd', response);
 			setStudentModules(response);
 		} catch (err) {
 			console.log(err);
@@ -36,7 +36,7 @@ export default function Modules({ activeModuleId, setActiveModuleId, moduleEndpo
 			{studentModules === null
 				? <p>Loading Modules</p>
 				:	<nav className="nav flex-column">
-					{studentModules.map((module) => (
+					{studentModules.map(module => (
 						<button
 							className={`nav-link ${ module.ModuleID === activeModuleId ? 'active' : ''}`}
 							id="moduleLink"

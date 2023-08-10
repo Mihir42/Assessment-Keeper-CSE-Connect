@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 import APIWrapper from '../../utils/API';
 
-export default function Assessments({ activeModuleId = 0 }) {
+export default function Assessments({ activeModuleId = 0, isModuleLeader = false }) {
 	// Initialisation ------------------------------
 	const API = new APIWrapper();
 	const assessmentEndpoint = activeModuleId === 0 ? 'assessments' : `assessments/module/${activeModuleId}`;
@@ -83,9 +83,9 @@ export default function Assessments({ activeModuleId = 0 }) {
 					<>
 						{assessments.map(assessment => {
 							// TODO: REPLACE MATH.RANDOM with actual data
-							return Math.random() < 0.5 ?
-								<StudentAssessmentAccordion assessment={assessment} isFavourite={Math.random() < 0.5} key={assessment.AssessmentID} />
-								: <LeaderAssessmentAccordion assessment={assessment} key={assessment.AssessmentID} />;
+							return isModuleLeader ?
+								<LeaderAssessmentAccordion assessment={assessment} key={assessment.AssessmentID} />
+								: <StudentAssessmentAccordion assessment={assessment} isFavourite={Math.random() < 0.5} key={assessment.AssessmentID} />;
 						})}
 					</>
 				}
@@ -96,4 +96,5 @@ export default function Assessments({ activeModuleId = 0 }) {
 
 Assessments.propTypes = {
 	activeModuleId: PropTypes.number,
+	isModuleLeader: PropTypes.bool,
 };
