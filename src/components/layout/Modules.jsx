@@ -15,7 +15,6 @@ export default function Modules({ activeModuleId, setActiveModuleId, moduleEndpo
 		try {
 			const response = await API.get(endpoint);
 			if (response.error) throw new Error('Error');
-			console.log('respdfd', response);
 			setStudentModules(response);
 		} catch (err) {
 			console.log(err);

@@ -1,8 +1,11 @@
 import { NavLink } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import { useContext } from 'react';
+import { UserContext } from '../../App.jsx';
 import './Header.scss';
 
-export default function Header({ user }) {
+export default function Header() {
+	const user = useContext(UserContext);
+
 	return (
 		<nav className="navbar navbar-expand-lg">
 			<div className="container">
@@ -22,8 +25,3 @@ export default function Header({ user }) {
 		</nav>
 	);
 }
-
-Header.propTypes = {
-	children: PropTypes.element,
-	user: PropTypes.object,
-};

@@ -46,7 +46,7 @@ StudentAssessmentAccordion.propTypes = {
 		AssessmentSubmissiondate:PropTypes.string,
 		AssessmentFeedbackdate:PropTypes.string,
 		AssessmentBriefURL: PropTypes.string,
-		AssessmentModuleID: PropTypes.string,
+		AssessmentModuleID: PropTypes.number,
 		AssessmentAssessmentTypeID: PropTypes.number,
 		AssessmentModuleName: PropTypes.string,
 		AssessmenttypeDescription: PropTypes.string,
