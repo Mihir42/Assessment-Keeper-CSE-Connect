@@ -9,10 +9,10 @@ export default function Header() {
 	return (
 		<nav className="navbar navbar-expand-lg">
 			<div className="container">
-				<NavLink to="/studentView" className="navbar-brand"><i className="fa fa-calendar"></i> AssessKeeper</NavLink>
+				<NavLink to="/modules" className="navbar-brand"><i className="fa fa-calendar"></i> AssessKeeper</NavLink>
 				{user.UserID == undefined ?
 					<li className="navbar-nav">
-						<a className="module-viewLink" href="/">Module Leader login</a>
+						<NavLink className="module-viewLink" href="/">Login</NavLink>
 					</li>
 					:
 					<li className="navbar-nav">

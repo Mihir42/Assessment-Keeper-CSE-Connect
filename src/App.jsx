@@ -1,11 +1,11 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { createContext, useState } from 'react';
-import Modules from './components/views/Modules';
-import Login from './components/views/Login';
-import './App.scss';
+import { Modules, Login } from './components/views';
 const UserContext = createContext();
+import './App.scss';
 
 function App() {
+	// Set user state
 	const [user, setUser] = useState({});
 
 	return (

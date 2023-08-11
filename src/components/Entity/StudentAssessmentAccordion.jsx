@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
-import Modal from '../UI/Modal';
-import Accordion from '../UI/Accordion';
+import { Modal, Accordion } from '../UI';
 import { useState } from 'react';
 
 export default function StudentAssessmentAccordion({ assessment, isFavourite }) {

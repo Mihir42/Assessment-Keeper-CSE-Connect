@@ -1,4 +1,4 @@
-import { Header, Navbar } from '../layout';
+import { Header, Navbar } from '../UI';
 import PropTypes from 'prop-types';
 import './Layout.scss';
 

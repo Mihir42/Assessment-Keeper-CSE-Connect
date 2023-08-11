@@ -1,5 +1,5 @@
-import { Header } from '../layout';
-import LoginCard from '../Entity/LoginCard';
+import { Header } from '../UI';
+import { LoginCard } from '../Entity';
 import PropTypes from 'prop-types';
 
 export default function Login({ user, setUser }) {

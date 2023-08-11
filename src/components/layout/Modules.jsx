@@ -1,4 +1,4 @@
-import Card from '../UI/Card';
+import { Card } from '../UI';
 import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 import APIWrapper from '../../utils/API';

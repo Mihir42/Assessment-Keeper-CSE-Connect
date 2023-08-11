@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
-import Modal from '../UI/Modal';
-import Accordion from '../UI/Accordion';
+import { Modal, Accordion } from '../UI';
 import { useState } from 'react';
 
 export default function LeaderAssessmentAccordion({ id, assessment }) {
@@ -29,7 +28,7 @@ export default function LeaderAssessmentAccordion({ id, assessment }) {
 					<p>{assessment.AssessmentAssessmenttypeDescription}</p>
 					<p>Page URL: <a href={assessment.AssessmentBriefURL}>{assessment.AssessmentBriefURL}</a></p>
 					<button type="button" className="btn btn-secondary" onClick={() => setShowModal(true)}>
-						Launch static backdrop modal
+						Edit
 					</button>
 				</>
 			</Accordion>

@@ -1,6 +1,5 @@
-import Card from '../UI/Card';
-import StudentAssessmentAccordion from './StudentAssessmentAccordion';
-import LeaderAssessmentAccordion from './LeaderAssessmentAccordion';
+import { Card } from '../UI';
+import { StudentAssessmentAccordion, LeaderAssessmentAccordion } from '../Entity';
 import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 import APIWrapper from '../../utils/API';
