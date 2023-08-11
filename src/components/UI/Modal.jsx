@@ -4,7 +4,7 @@ import './Modal.scss';
 export default function Modal({ id, title, children, show, setShowModal }) {
 	return (
 		<div className={`modal fade ${show ? 'show' : ''}`} tabIndex="-1" id={id} style={{ display:`${show ? 'block' : 'none'}` }}>
-			<div className="modal-dialog modal-dialog-centered">
+			<div className="modal-dialog">
 				<div className="modal-content">
 					<div className="modal-header">
 						<h5 className="modal-title">{title}</h5>

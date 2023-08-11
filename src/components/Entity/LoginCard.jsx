@@ -35,7 +35,8 @@ export default function LoginCard({ title, setUser }) {
 		setLoginAttempt({ ...loginAttempt, [name]: conformance.html2js[name](value) });
 	};
 
-	const handleSubmit = async () => {
+	const handleSubmit = async (e) => {
+		e?.preventDefault();
 		try {
 			const possibleUser = await API.get(`users/${loginAttempt.LoginUsername}`);
 			if (possibleUser[0]) {
@@ -51,20 +52,22 @@ export default function LoginCard({ title, setUser }) {
 
 	// View ----------------------------------------------------------
 	return(
-		<div className='loginCard'>
-			<h4 className='loginCard-header'>{title}</h4>
-			<div className='loginCard-body'>
-				<label htmlFor="1">
-          Username
+		<div className="loginCard">
+			<form onSubmit={(e) => handleSubmit(e)}>
+				<h4 className="loginCard-header">{title}</h4>
+				<div className="loginCard-body">
+					<label htmlFor="1">
+						Username
+					</label>
 					<input type="text" id="1" name="LoginUsername" value={conformance.js2html['LoginUsername'](loginAttempt.LoginUsername)} onChange={handleChange } autoComplete="false" />
-				</label>
-				<label htmlFor="2">
-          Password
-					<input type='password' id="2" name='LoginPassword' value={conformance.js2html['LoginPassword'](loginAttempt.LoginPassowrd)} onChange={handleChange} />
-				</label>
-				<button type='button' className='cancelButton' >Cancel</button>
-				<button type='button' className='loginButton' onClick={handleSubmit} >Login</button>
-			</div>
+					<label htmlFor="2">
+						Password
+					</label>
+					<input type="password" id="2" name="LoginPassword" value={conformance.js2html['LoginPassword'](loginAttempt.LoginPassowrd)} onChange={handleChange} />
+					<button type="submit" className="cancelButton" >Cancel</button>
+					<button type="button" className="loginButton" onClick={() => handleSubmit()}>Login</button>
+				</div>
+			</form>
 		</div>
 	);
 }
