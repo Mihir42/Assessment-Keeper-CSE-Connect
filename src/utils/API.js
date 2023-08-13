@@ -30,8 +30,8 @@ class APIWrapper {
   	* @param {string} endpoint endpoint the user is trying to access
   	* @returns {Promise<Object>} Object of data
   */
-	async put(endpoint) {
-		return this._sendRequest(endpoint, 'PUT');
+	async put(endpoint, data) {
+		return this._sendRequest(endpoint, 'PUT', data);
 	}
 
 	/**
