@@ -22,7 +22,7 @@ export default function LeaderAssessmentAccordion({ id, assessment }) {
 	const handleSubmit = async (e) => {
 		e?.preventDefault();
 		try {
-			const data = await API.put(`assessments/${assessment.AssessmentID}`, editValues);
+			await API.put(`assessments/${assessment.AssessmentID}`, editValues);
 			alert(`Successfully updated: ${assessment.AssessmentName}`);
 		} catch (err) {
 			alert(`Failed to update: ${assessment.AssessmentName}`);

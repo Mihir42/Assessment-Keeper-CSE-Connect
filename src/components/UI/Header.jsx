@@ -16,9 +16,9 @@ export default function Header() {
 					</li>
 					:
 					<li className="navbar-nav">
-						<a className="module-viewLink" href="/">
+						<NavLink className="module-viewLink" href="/">
 							<img src={user.UserImageURL} width={25} height={25} className="rounded-circle" alt="User avatar" />{user.UserLastname}, {user.UserFirstname}
-						</a>
+						</NavLink>
 					</li>
 				}
 			</div>

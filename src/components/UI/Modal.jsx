@@ -15,8 +15,6 @@ export default function Modal({ id, title, children, show, setShowModal }) {
 					</div>
 					<div className="modal-footer">
 						<button type="button" className="btn btn-secondary" onClick={() => setShowModal(false)}>Close</button>
-						&nbsp;
-						<button type="button" className="btn btn-primary">Save changes</button>
 					</div>
 				</div>
 			</div>

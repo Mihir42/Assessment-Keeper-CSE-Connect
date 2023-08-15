@@ -1,16 +1,19 @@
 import { Card } from '../UI';
 import { StudentAssessmentAccordion, LeaderAssessmentAccordion } from '../Entity';
 import PropTypes from 'prop-types';
-import { useState, useEffect } from 'react';
+import { UserContext } from '../../App.jsx';
+import { useContext, useState, useEffect } from 'react';
 import APIWrapper from '../../utils/API';
 
 export default function Assessments({ activeModuleId = 0, isModuleLeader = false }) {
 	// Initialisation ------------------------------
 	const API = new APIWrapper();
+	const user = useContext(UserContext);
 	const assessmentEndpoint = activeModuleId === 0 ? 'assessments' : `assessments/module/${activeModuleId}`;
 
 	// State ---------------------------------------
 	const [assessments, setAssessments] = useState(null);
+	const [favourites, setFavourites] = useState([]);
 
 	const getAssessments = async (returnValues = false) => {
 		try {
@@ -24,10 +27,21 @@ export default function Assessments({ activeModuleId = 0, isModuleLeader = false
 		}
 	};
 
+	const getFavourites = async () => {
+		try {
+			const response = await API.get(`favourites/users/${user.UserID}`);
+			// Only add the favourites which are category assessments (Don't want group assessments)
+			if (Array.isArray(response)) setFavourites(response.filter(f => f.FavouriteCategory == 'Assessments'));
+		} catch (err) {
+			console.log(err);
+			setFavourites([]);
+		}
+	};
 
 	// Fetch student assessments on page load
 	useEffect(() => {
 		getAssessments();
+		getFavourites();
 	}, [assessmentEndpoint]);
 
 
@@ -84,7 +98,7 @@ export default function Assessments({ activeModuleId = 0, isModuleLeader = false
 							// TODO: REPLACE MATH.RANDOM with actual data
 							return isModuleLeader ?
 								<LeaderAssessmentAccordion assessment={assessment} key={assessment.AssessmentID} />
-								: <StudentAssessmentAccordion assessment={assessment} isFavourite={Math.random() < 0.5} key={assessment.AssessmentID} />;
+								: <StudentAssessmentAccordion assessment={assessment} isFavourite={favourites.find(f => f.FavouriteLikedID == assessment.AssessmentID)} key={assessment.AssessmentID} />;
 						})}
 					</>
 				}
