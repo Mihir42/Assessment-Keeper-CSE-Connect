@@ -39,6 +39,7 @@ export default function LeaderAssessmentAccordion({ id, assessment }) {
 					<input type="text" className="input-field" name="AssessmentName" defaultValue={assessment.AssessmentName} onChange={handleChange} />
 					<label>Publish Date:</label>
 					<input type="datetime-local" className="input-field" name="AssessmentPublishdate" defaultValue={validDateTime} onChange={handleChange} />
+					<button className="btn btn-success" type="submit" style={{ marginTop: '15px' }}>Submit</button>
 				</form>
 			</Modal>
 
