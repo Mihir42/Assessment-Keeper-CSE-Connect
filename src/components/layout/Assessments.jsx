@@ -1,4 +1,5 @@
-import { Card } from '../UI';
+import { Card, Modal} from '../UI';
+
 import { StudentAssessmentAccordion, LeaderAssessmentAccordion } from '../Entity';
 import PropTypes from 'prop-types';
 import { UserContext } from '../../App.jsx';
@@ -14,6 +15,7 @@ export default function Assessments({ activeModuleId = 0, isModuleLeader = false
 	// State ---------------------------------------
 	const [assessments, setAssessments] = useState(null);
 	const [favourites, setFavourites] = useState([]);
+	const [showModal, setShowModal] = useState(false);
 
 	const getAssessments = async (returnValues = false) => {
 		try {
@@ -72,6 +74,12 @@ export default function Assessments({ activeModuleId = 0, isModuleLeader = false
 		}
 	}
 
+	function submitAssessment() {
+		// console.log("Assessment button was clicked");
+		setShowModal(true);
+		console.log(showModal);
+	}
+
 
 	// View ----------------------------------------
 	return (
@@ -80,6 +88,9 @@ export default function Assessments({ activeModuleId = 0, isModuleLeader = false
 				<div className="row" style={{ paddingLeft: '32px' }}>
 					<div className="col-sm-8">
 						<input type="text" className="input-field" placeholder="Search" onChange={(e) => handleFilter(e)}/>
+						<button type="submit" className="addAssessmentButton" onClick={submitAssessment}>
+							Add Assessment
+						</button>
 					</div>
 					<div className="col-sm-3">
 						<select name="sort" id="sortSelect" className="input-field" onChange={(e) => handleSort(e)}>
@@ -89,6 +100,7 @@ export default function Assessments({ activeModuleId = 0, isModuleLeader = false
 						</select>
 					</div>
 				</div>
+				{ showModal == true ? <Modal/> : null }
 				&nbsp;
 				{assessments == null || assessments.length == 0 || Array.isArray(assessments) == false
 					? <p>No Assessments uploaded for this module</p>
