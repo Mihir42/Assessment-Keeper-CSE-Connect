@@ -16,6 +16,8 @@ export default function Assessments({ activeModuleId = 0, isModuleLeader = false
 	const [assessments, setAssessments] = useState(null);
 	const [favourites, setFavourites] = useState([]);
 	const [showModal, setShowModal] = useState(false);
+	const [assessmentName, setAssessmentName] = useState(null);
+	const [assessmentDescription, setAssessmentDescription] = useState(null);
 
 	const getAssessments = async (returnValues = false) => {
 		try {
@@ -74,11 +76,18 @@ export default function Assessments({ activeModuleId = 0, isModuleLeader = false
 		}
 	}
 
+	const handleChange = (event) => {
+		setAssessmentName(event.target.value);
+		console.log(assessmentName);
+	}
+
 	function submitAssessment() {
 		// console.log("Assessment button was clicked");
 		setShowModal(true);
 		console.log(showModal);
 	}
+
+	
 
 
 	// View ----------------------------------------
@@ -88,9 +97,6 @@ export default function Assessments({ activeModuleId = 0, isModuleLeader = false
 				<div className="row" style={{ paddingLeft: '32px' }}>
 					<div className="col-sm-8">
 						<input type="text" className="input-field" placeholder="Search" onChange={(e) => handleFilter(e)}/>
-						<button type="submit" className="addAssessmentButton" onClick={submitAssessment}>
-							Add Assessment
-						</button>
 					</div>
 					<div className="col-sm-3">
 						<select name="sort" id="sortSelect" className="input-field" onChange={(e) => handleSort(e)}>
@@ -100,7 +106,7 @@ export default function Assessments({ activeModuleId = 0, isModuleLeader = false
 						</select>
 					</div>
 				</div>
-				{ showModal == true ? <Modal/> : null }
+
 				&nbsp;
 				{assessments == null || assessments.length == 0 || Array.isArray(assessments) == false
 					? <p>No Assessments uploaded for this module</p>
@@ -114,6 +120,23 @@ export default function Assessments({ activeModuleId = 0, isModuleLeader = false
 						})}
 					</>
 				}
+
+				<Modal id={activeModuleId} title={'Modal add assessment'} show={showModal} setShowModal={setShowModal}>
+					<form>
+						<label>Assessment Name</label>
+						<input type="text" className="input-field" name="AssessmentName" defaultValue={"Assessment name"} onChange={handleChange} />
+						<label>Assessment Description</label>
+						<input type="text" className="input-field" name="AssessmentDescription" defaultValue={"Assessment description"} onChange={handleChange} />
+						<label>Assessment Date</label>
+						<input type="datetime-local" className="input-field" name="AssessmentDueDate" defaultValue={"01/01/2023"} onChange={handleChange} />
+						<button className="submitAssessName" type="submit">Submit</button>
+					</form>
+				</Modal>
+				
+				<button type="submit" className="addAssessmentButton" onClick={() => setShowModal(true)}>
+					Add Assessment
+				</button>
+
 			</>
 		</Card>
 	);
