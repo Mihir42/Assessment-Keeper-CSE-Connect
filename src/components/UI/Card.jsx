@@ -4,7 +4,8 @@ import './Card.scss';
 export function Card(props) {
 	return (
 		<div className="card">
-			<h4 className="card-header">{props.title}</h4>
+			<h4 className="card-header">{props.title}  <div style={{ float:'right' }}>{props.leftHand}</div>
+			</h4>
 			<div className="card-body">
 				{props.children}
 			</div>
@@ -15,6 +16,7 @@ export function Card(props) {
 Card.propTypes = {
 	title: PropTypes.string,
 	children: PropTypes.element,
+	leftHand: PropTypes.element,
 };
 
 export function CardContainer(props) {

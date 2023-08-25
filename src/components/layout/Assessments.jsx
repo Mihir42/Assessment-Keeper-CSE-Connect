@@ -90,7 +90,10 @@ export default function Assessments({ activeModuleId = 0, isModuleLeader = false
 
 	// View ----------------------------------------
 	return (
-		<Card title={'Assessment'}>
+		<Card title={'Assessment'} leftHand={isModuleLeader ? <button type="submit" className="btn addAssessmentButton" onClick={() => setShowModal(true)}>
+			Add Assessment
+		</button> : null}
+		>
 			<>
 				<div className="row" style={{ paddingLeft: '32px' }}>
 					<div className="col-sm-8">
@@ -130,11 +133,6 @@ export default function Assessments({ activeModuleId = 0, isModuleLeader = false
 						<button className="submitAssessName" type="submit">Submit</button>
 					</form>
 				</Modal>
-
-				<button type="submit" className="addAssessmentButton" onClick={() => setShowModal(true)}>
-					Add Assessment
-				</button>
-
 			</>
 		</Card>
 	);
