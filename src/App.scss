@@ -1,3 +1,6 @@
+@use "sass:math";
+$columns: 12;
+
 html {
   font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",
   "Noto Sans","Liberation Sans",Arial,sans-serif,"Apple Color Emoji",
@@ -81,25 +84,37 @@ li {
     max-width: 960px;
   }
 
-  .col-lg-4 {
-    flex: 0 0 auto;
-    width: 33.3%;
-  }
-  .col-lg-8 {
-    flex: 0 0 auto;
-    width: 66.7%;
-  }
-
-  .col-sm-3 {
-    flex: 0 0 auto;
-    width: 25%;
+  @mixin col-x-list {
+    @for $i from 1 through $columns {
+      @debug math.div($i, $columns);
+      .col-lg-#{$i} {
+        flex: 0 0 auto;
+        width: percentage(math.div($i, $columns));
+      }
+    }
   }
 
-  .col-sm-8 {
-    flex: 0 0 auto;
-    width: 74%;
-  }
+  @include col-x-list;
 }
+
+@media screen and (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+
+  @mixin col-x-list {
+    @for $i from 1 through $columns {
+      .col-sm-#{$i} {
+        flex: 0 0 auto;
+        width: percentage(math.div($i, $columns));
+      }
+    }
+  }
+
+  @include col-x-list;
+}
+
+
 
 @media screen and (min-width: 1200px) {
   .container {
