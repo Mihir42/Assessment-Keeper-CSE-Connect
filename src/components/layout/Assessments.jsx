@@ -1,4 +1,4 @@
-import { Card, Modal} from '../UI';
+import { Card, Modal } from '../UI';
 
 import { StudentAssessmentAccordion, LeaderAssessmentAccordion } from '../Entity';
 import PropTypes from 'prop-types';
@@ -79,15 +79,13 @@ export default function Assessments({ activeModuleId = 0, isModuleLeader = false
 	const handleChange = (event) => {
 		setAssessmentName(event.target.value);
 		console.log(assessmentName);
-	}
+	};
 
 	function submitAssessment() {
 		// console.log("Assessment button was clicked");
 		setShowModal(true);
 		console.log(showModal);
 	}
-
-	
 
 
 	// View ----------------------------------------
@@ -124,15 +122,15 @@ export default function Assessments({ activeModuleId = 0, isModuleLeader = false
 				<Modal id={activeModuleId} title={'Modal add assessment'} show={showModal} setShowModal={setShowModal}>
 					<form>
 						<label>Assessment Name</label>
-						<input type="text" className="input-field" name="AssessmentName" defaultValue={"Assessment name"} onChange={handleChange} />
+						<input type="text" className="input-field" name="AssessmentName" defaultValue={'Assessment name'} onChange={handleChange} />
 						<label>Assessment Description</label>
-						<input type="text" className="input-field" name="AssessmentDescription" defaultValue={"Assessment description"} onChange={handleChange} />
+						<input type="text" className="input-field" name="AssessmentDescription" defaultValue={'Assessment description'} onChange={handleChange} />
 						<label>Assessment Date</label>
-						<input type="datetime-local" className="input-field" name="AssessmentDueDate" defaultValue={"01/01/2023"} onChange={handleChange} />
+						<input type="datetime-local" className="input-field" name="AssessmentDueDate" defaultValue={new Date().toISOString().slice(0, -8)} onChange={handleChange} />
 						<button className="submitAssessName" type="submit">Submit</button>
 					</form>
 				</Modal>
-				
+
 				<button type="submit" className="addAssessmentButton" onClick={() => setShowModal(true)}>
 					Add Assessment
 				</button>
