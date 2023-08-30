@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './Navbar.scss';
+import { NavLink } from 'react-router-dom';
 
 export default function Navbar() {
 	// Set active state for first item
@@ -13,7 +14,7 @@ export default function Navbar() {
 						<button className={`nav-link ${active == 'Home' ? 'active' : ''}`} id="title" onClick={() => setActive('Home')}>Home</button>
 					</li>
 					<li className="nav-item">
-						<button className={`nav-link ${active == 'Assignments' ? 'active' : ''}`} id="title" onClick={() => setActive('Assignments')}>Favourite Assessments</button>
+						<NavLink to = "/" className= 'nav-link'>Add Assessments</NavLink>
 					</li>
 					<li className="nav-item">
 						<button className={`nav-link ${active == 'Tasks' ? 'active' : ''}`} id="title" onClick={() => setActive('Tasks')}>Tasks</button>
