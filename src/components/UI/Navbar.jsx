@@ -1,23 +1,22 @@
-import { useState } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
 import './Navbar.scss';
-import { NavLink } from 'react-router-dom';
 
 export default function Navbar() {
 	// Set active state for first item
-	const [active, setActive] = useState('Home');
+	const location = useLocation();
 
 	return (
 		<nav className="navbar navbar-expand-lg" id="navbar2">
 			<div className="container">
 				<ul className="nav nav-underline">
 					<li className="nav-item">
-						<button className={`nav-link ${active == 'Home' ? 'active' : ''}`} id="title" onClick={() => setActive('Home')}>Home</button>
+						<NavLink to="/modules" className={`nav-link ${location.pathname == '/modules' ? 'active' : ''}`} id="title">Home</NavLink>
 					</li>
 					<li className="nav-item">
-						<NavLink to = "/" className= 'nav-link'>Add Assessments</NavLink>
+						<NavLink to="/addAssessments" className={`nav-link ${location.pathname == '/addAssessments' ? 'active' : ''}`} id="title">Add Assessments</NavLink>
 					</li>
 					<li className="nav-item">
-						<button className={`nav-link ${active == 'Tasks' ? 'active' : ''}`} id="title" onClick={() => setActive('Tasks')}>Tasks</button>
+						<NavLink to="/" className={`nav-link ${location.pathname == '/Tasks' ? 'active' : ''}`} id="title">Tasks</NavLink>
 					</li>
 				</ul>
 			</div>
