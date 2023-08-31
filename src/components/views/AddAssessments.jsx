@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Layout } from '../layout';
 import { Card } from '../UI';
+import APIWrapper from '../../utils/API';
 
 const initialAssessment = {
 	AssessmentID: 0,
@@ -47,8 +48,27 @@ export default function AddAssessments() {
 			AssessmentAssessmenttypeDescription: (value) => (value === null ? '' : value),
 		},
 	};
+	const api = new APIWrapper();
+	const assessmentEndpoint = '/assessments';
+
 	// State --------------------------------------------------------
 	const [assessment, setAssessment] = useState(initialAssessment);
+
+	const apiPost = async (endpoint, record) => {
+		// Build request object
+		const request = {
+			method: 'POST',
+			body: JSON.stringify(assessment),
+			headers: { 'Content-type': 'application/json' },
+		};
+
+		// Call the fetch
+		const response = await fetch(endpoint, request);
+		const result = await response.json();
+		return response.status >= 200 && response.status < 300
+			? { isSuccess: true }
+			: { isSuccess: false, message: result.message };
+	};
 	// Handlers -----------------------------------------------------
 	const handleChange = (event) => {
 		const { name, value } = event.target;
