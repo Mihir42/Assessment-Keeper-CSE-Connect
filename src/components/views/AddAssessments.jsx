@@ -18,12 +18,41 @@ const initialAssessment = {
 
 export default function AddAssessments() {
 	// Initialisation -----------------------------------------------
+	const conformance = {
+		html2js : {
+			AssessmentID: (value) => (value === 0 ? null : parseInt(value)),
+			AssessmentName: (value) => (value === '' ? null : value),
+			AssessmentPercentage: (value) => (value === 0 ? null : parseInt(value)),
+			AssessmentPublishDate: (value) => (value === '' ? null : value),
+			AssessmentSubmissionDate: (value) => (value === '' ? null : value),
+			AssessmentFeedbackdate: (value) => (value === '' ? null : value),
+			AssessmentBriefURL: (value) => (value === '' ? null : value),
+			AssessmentModuleID: (value) => (value === 0 ? null : parseInt(value)),
+			AssessmentAssessmenttypeID: (value) => (value === 0 ? null : parseInt(value)),
+			AssessmentModuleName: (value) => (value === '' ? null : value),
+			AssessmentAssessmenttypeDescription: (value) => (value === '' ? null : value),
+		},
+
+		js2html : {
+			AssessmentID: (value) => (value === null ? 0 : value),
+			AssessmentName: (value) => (value === null ? '' : value),
+			AssessmentPercentage: (value) => (value === null ? 0 : value),
+			AssessmentPublishDate: (value) => (value === null ? '' : value),
+			AssessmentSubmissionDate: (value) => (value === null ? '' : value),
+			AssessmentFeedbackdate: (value) => (value === null ? '' : value),
+			AssessmentBriefURL: (value) => (value === null ? '' : value),
+			AssessmentModuleID: (value) => (value === null ? 0 : value),
+			AssessmentAssessmenttypeID: (value) => (value === null ? 0 : value),
+			AssessmentModuleName: (value) => (value === null ? '' : value),
+			AssessmentAssessmenttypeDescription: (value) => (value === null ? '' : value),
+		},
+	};
 	// State --------------------------------------------------------
 	const [assessment, setAssessment] = useState(initialAssessment);
 	// Handlers -----------------------------------------------------
 	const handleChange = (event) => {
 		const { name, value } = event.target;
-		setAssessment({ ...assessment, [name]: value });
+		setAssessment({ ...assessment, [name]: conformance.html2js[name](value) });
 	};
 	const handleSubmit = () => {
 		console.log(`Assessment=[${JSON.stringify(assessment)}]`);
@@ -35,27 +64,27 @@ export default function AddAssessments() {
 			<Card title='Balls'>
 				<>
 					<label>Assessment ID</label>
-					<input type='text' className='input-field' name='AssessmentID' value={assessment.AssessmentID} onChange={handleChange} />
+					<input type='Number' className='input-field' name='AssessmentID' value={conformance.js2html['AssessmentID'](assessment.AssessmentID)} onChange={handleChange} />
 					<label>Assessment Name</label>
-					<input type='text' className='input-field' name='AssessmentName' value={assessment.AssessmentName == null ? '' : assessment.AssessmentName} onChange={handleChange} />
+					<input type='text' className='input-field' name='AssessmentName' value={conformance.js2html['AssessmentName'](assessment.AssessmentName)} onChange={handleChange} />
 					<label>Assessment Percentage</label>
-					<input type='text' className='input-field' name='AssessmentPercentage' value={assessment.AssessmentPercentage} onChange={handleChange} />
+					<input type='Number' className='input-field' name='AssessmentPercentage' value={conformance.js2html['AssessmentPercentage'](assessment.AssessmentPercentage)} onChange={handleChange} />
 					<label>Assessment Publish Date</label>
-					<input type='text' className='input-field' name='AssessmentPublishDate' value={assessment.AssessmentPublishDate == null ? '' : assessment.AssessmentPublishDate} onChange={handleChange} />
+					<input type='text' className='input-field' name='AssessmentPublishDate' value={conformance.js2html['AssessmentPublishDate'](assessment.AssessmentPublishDate)} onChange={handleChange} />
 					<label>Assessment Submission Date</label>
-					<input type='text' className='input-field' name='AssessmentSubmissionDate' value={assessment.AssessmentSubmissionDate == null ? '' : assessment.AssessmentSubmissionDate} onChange={handleChange} />
+					<input type='text' className='input-field' name='AssessmentSubmissionDate' value={conformance.js2html['AssessmentSubmissionDate'](assessment.AssessmentSubmissionDate)} onChange={handleChange} />
 					<label>Assessment Feedback Date</label>
-					<input type='text' className='input-field' name='AssessmentFeedbackdate' value={assessment.AssessmentFeedbackdate == null ? '' : assessment.AssessmentFeedbackdate} onChange={handleChange} />
+					<input type='text' className='input-field' name='AssessmentFeedbackdate' value={conformance.js2html['AssessmentFeedbackdate'](assessment.AssessmentFeedbackdate)} onChange={handleChange} />
 					<label>Assessment Brief URL</label>
-					<input type='text' className='input-field' name='AssessmentBriefURL' value={assessment.AssessmentBriefURL == null ? '' : assessment.AssessmentBriefURL} onChange={handleChange} />
+					<input type='text' className='input-field' name='AssessmentBriefURL' value={conformance.js2html['AssessmentBriefURL'](assessment.AssessmentBriefURL)} onChange={handleChange} />
 					<label>Assessment Module ID</label>
-					<input type='text' className='input-field' name='AssessmentModuleID' value={assessment.AssessmentModuleID} onChange={handleChange} />
+					<input type='Number' className='input-field' name='AssessmentModuleID' value={conformance.js2html['AssessmentModuleID'](assessment.AssessmentModuleID)} onChange={handleChange} />
 					<label>Assessment Assessment Type ID</label>
-					<input type='text' className='input-field' name='AssessmentAssessmenttypeID' value={assessment.AssessmentAssessmenttypeID} onChange={handleChange} />
+					<input type='Number' className='input-field' name='AssessmentAssessmenttypeID' value={conformance.js2html['AssessmentAssessmenttypeID'](assessment.AssessmentAssessmenttypeID)} onChange={handleChange} />
 					<label>Assessment Module Name</label>
-					<input type='text' className='input-field' name='AssessmentModuleName' value={assessment.AssessmentModuleName == null ? '' : assessment.AssessmentModuleName} onChange={handleChange} />
+					<input type='text' className='input-field' name='AssessmentModuleName' value={conformance.js2html['AssessmentModuleName'](assessment.AssessmentModuleName)} onChange={handleChange} />
 					<label>Assessment Assessment type description</label>
-					<input type='text' className='input-field' name='AssessmentAssessmenttypeDescription' value={assessment.AssessmentAssessmenttypeDescription == null ? '' : assessment.AssessmentAssessmenttypeDescription} onChange={handleChange}/>
+					<input type='text' className='input-field' name='AssessmentAssessmenttypeDescription' value={conformance.js2html['AssessmentAssessmenttypeDescription'](assessment.AssessmentAssessmenttypeDescription)} onChange={handleChange}/>
 					<button className='submitAssessment' type='submit' onClick={handleSubmit}>Submit</button>
 				</>
 			</Card>
