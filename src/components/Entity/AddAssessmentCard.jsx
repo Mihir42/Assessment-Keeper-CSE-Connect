@@ -14,8 +14,8 @@ export default function AddAssessmentCard() {
 			AssessmentID: (value) => (value === 0 ? null : parseInt(value)),
 			AssessmentName: (value) => (value === '' ? null : value),
 			AssessmentPercentage: (value) => (value === 0 ? null : parseInt(value)),
-			AssessmentPublishDate: (value) => (value === '' ? null : value),
-			AssessmentSubmissionDate: (value) => (value === '' ? null : value),
+			AssessmentPublishdate: (value) => (value === '' ? null : value),
+			AssessmentSubmissiondate: (value) => (value === '' ? null : value),
 			AssessmentFeedbackdate: (value) => (value === '' ? null : value),
 			AssessmentBriefURL: (value) => (value === '' ? null : value),
 			AssessmentModuleID: (value) => (value === 0 ? null : parseInt(value)),
@@ -28,8 +28,8 @@ export default function AddAssessmentCard() {
 			AssessmentID: (value) => (value === null ? 0 : value),
 			AssessmentName: (value) => (value === null ? '' : value),
 			AssessmentPercentage: (value) => (value === null ? 0 : value),
-			AssessmentPublishDate: (value) => (value === null ? '' : value),
-			AssessmentSubmissionDate: (value) => (value === null ? '' : value),
+			AssessmentPublishdate: (value) => (value === null ? '' : value),
+			AssessmentSubmissiondate: (value) => (value === null ? '' : value),
 			AssessmentFeedbackdate: (value) => (value === null ? '' : value),
 			AssessmentBriefURL: (value) => (value === null ? '' : value),
 			AssessmentModuleID: (value) => (value === null ? 0 : value),
@@ -39,15 +39,16 @@ export default function AddAssessmentCard() {
 		},
 	};
 	const API = new APIWrapper();
-	const assessmentEndpoint = '/assessments';
+	const apiURL = 'http://softwarehub.uk/unibase/api';
+	const assessmentEndpoint = `${apiURL}/assessments`;
 
 	// State --------------------------------------------------------
 	const [assessment, setAssessment] = useState({
 		AssessmentID: 0,
 		AssessmentName: null,
 		AssessmentPercentage: 0,
-		AssessmentPublishDate: defaultPublishDate,
-		AssessmentSubmissionDate: defaultSubmissionDate,
+		AssessmentPublishdate: defaultPublishDate,
+		AssessmentSubmissiondate: defaultSubmissionDate,
 		AssessmentFeedbackdate: defaultFeedbackDate,
 		AssessmentBriefURL: null,
 		AssessmentModuleID: 0,
@@ -61,7 +62,7 @@ export default function AddAssessmentCard() {
 		// Build request object
 		const request = {
 			method: 'POST',
-			body: JSON.stringify(assessment),
+			body: JSON.stringify(record),
 			headers: { 'Content-type': 'application/json' },
 		};
 
@@ -85,8 +86,14 @@ export default function AddAssessmentCard() {
 		setAssessment({ ...assessment, [name]: conformance.html2js[name](value) });
 	};
 
-	const handleSubmit = () => {
+	const handleSubmit = async () => {
 		console.log(`Assessment=[${JSON.stringify(assessment)}]`);
+
+		const result = apiPost(assessmentEndpoint, assessment);
+
+		result.isSuccess
+			? console.log('Insert successful')
+			: console.log(`Insert not successful: ${(await result).message}`);
 	};
 
 	return (
@@ -96,17 +103,21 @@ export default function AddAssessmentCard() {
 				<div className="loginCard">
 					<div className="row">
 						<div className="col-lg-6">
+
+							<label htmlFor="AssessmentID">Assessment ID</label>
+							<input type="Number" className="input-field" id="AssessmentID" name="AssessmentID" value={conformance.js2html['AssessmentID'](assessment.AssessmentID)} onChange={handleChange} />
+
 							<label htmlFor="AssessmentName">Name: </label>
 							<input type="text" className="input-field" id="AssessmentName" name="AssessmentName" value={conformance.js2html['AssessmentName'](assessment.AssessmentName)} onChange={handleChange} />
 
 							<label htmlFor="AssessmentPercentage">Percentage</label>
 							<input type="Number" className="input-field" id="AssessmentPercentage" name="AssessmentPercentage" value={conformance.js2html['AssessmentPercentage'](assessment.AssessmentPercentage)} onChange={handleChange} />
 
-							<label htmlFor="AssessmentPublishDate">Publish Date:</label>
-							<input type="datetime-local" className="input-field" id="AssessmentPublishDate" name="AssessmentPublishDate" value={conformance.js2html['AssessmentPublishDate'](assessment.AssessmentPublishDate)} onChange={handleChange} />
+							<label htmlFor="AssessmentPublishdate">Publish Date:</label>
+							<input type="datetime-local" className="input-field" id="AssessmentPublishdate" name="AssessmentPublishdate" value={conformance.js2html['AssessmentPublishdate'](assessment.AssessmentPublishdate)} onChange={handleChange} />
 
-							<label htmlFor="AssessmentSubmissionDate">Submission Date:</label>
-							<input type="datetime-local" className="input-field" id="AssessmentSubmissionDate" name="AssessmentSubmissionDate" value={conformance.js2html['AssessmentSubmissionDate'](assessment.AssessmentSubmissionDate)} onChange={handleChange} />
+							<label htmlFor="AssessmentSubmissiondate">Submission Date:</label>
+							<input type="datetime-local" className="input-field" id="AssessmentSubmissiondate" name="AssessmentSubmissiondate" value={conformance.js2html['AssessmentSubmissiondate'](assessment.AssessmentSubmissiondate)} onChange={handleChange} />
 
 							<label htmlFor="AssessmentFeedbackdate">Feedback Date:</label>
 							<input type="datetime-local" className="input-field" id="AssessmentFeedbackdate" name="AssessmentFeedbackdate" value={conformance.js2html['AssessmentFeedbackdate'](assessment.AssessmentFeedbackdate)} onChange={handleChange} />
