@@ -79,7 +79,7 @@ END:VCALENDAR
 				<>
 					<p>{assessment.AssessmentAssessmenttypeDescription}</p>
 					<p>Page URL: <a href={assessment.AssessmentBriefURL}>{assessment.AssessmentBriefURL}</a></p>
-					<button onClick={() => downloadCalenderFile()}>Download Calender file</button>
+					<button className="btn" onClick={() => downloadCalenderFile()}>Download Calender file</button>
 				</>
 			</Accordion>
 		</>

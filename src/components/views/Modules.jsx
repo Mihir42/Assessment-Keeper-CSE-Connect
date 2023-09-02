@@ -23,14 +23,16 @@ export default function ModuleLeaderDashboard() {
 	// View ----------------------------------------
 	return (
 		<Layout>
-			<div className="row">
-				<div className="col-lg-4">
-					<Modules activeModuleId={activeModuleId} setActiveModuleId={setActiveModuleId} moduleEndpoint={moduleEndpoint}/>
+			<>
+				<div className="row">
+					<div className="col-lg-4">
+						<Modules activeModuleId={activeModuleId} setActiveModuleId={setActiveModuleId} moduleEndpoint={moduleEndpoint}/>
+					</div>
+					<div className="col-lg-8">
+						<Assessments activeModuleId={activeModuleId} isModuleLeader={user.UserUsertypeName !== 'Student'} />
+					</div>
 				</div>
-				<div className="col-lg-8">
-					<Assessments activeModuleId={activeModuleId} isModuleLeader={user.UserUsertypeName !== 'Student'} />
-				</div>
-			</div>
+			</>
 		</Layout>
 	);
 }

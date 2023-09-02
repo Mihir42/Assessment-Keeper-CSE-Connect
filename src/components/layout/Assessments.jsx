@@ -95,17 +95,13 @@ export default function Assessments({ activeModuleId = 0, isModuleLeader = false
 		</button> : null}
 		>
 			<>
-				<div className="row" style={{ paddingLeft: '32px' }}>
-					<div className="col-sm-8">
-						<input type="text" className="input-field" placeholder="Search" onChange={(e) => handleFilter(e)}/>
-					</div>
-					<div className="col-sm-3">
-						<select name="sort" id="sortSelect" className="input-field" onChange={(e) => handleSort(e)}>
-							<option value="relevant">Relevant</option>
-							<option value="oldest">Oldest</option>
-							<option value="newest">Newest</option>
-						</select>
-					</div>
+				<div className="row" style={{ margin: '0px 5px', display: 'flex', justifyContent: 'space-between' }}>
+					<input type="text" className="input-field" placeholder="Search" onChange={(e) => handleFilter(e)}/>
+					<select name="sort" id="sortSelect" className="input-field" onChange={(e) => handleSort(e)} style={{ marginRight: '35px' }}>
+						<option value="relevant">Relevant</option>
+						<option value="oldest">Oldest</option>
+						<option value="newest">Newest</option>
+					</select>
 				</div>
 
 				&nbsp;

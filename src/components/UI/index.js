@@ -4,5 +4,6 @@ import Footer from './Footer.jsx';
 import Modal from './Modal.jsx';
 import Header from './Header.jsx';
 import Navbar from './Navbar.jsx';
+import Notification from './Notification.jsx';
 
-export { Accordion, Card, Footer, Modal, Header, Navbar };
+export { Accordion, Card, Footer, Modal, Header, Navbar, Notification };

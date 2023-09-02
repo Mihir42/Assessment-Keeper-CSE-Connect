@@ -6,7 +6,7 @@ export default function Navbar() {
 	const location = useLocation();
 
 	return (
-		<nav className="navbar navbar-expand-lg" id="navbar2">
+		<nav className="navbar" id="navbar2">
 			<div className="container">
 				<ul className="nav nav-underline">
 					<li className="nav-item">
