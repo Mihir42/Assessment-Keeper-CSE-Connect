@@ -17,6 +17,8 @@
   flex: 1 1 auto;
   padding: 16px 0;
   overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .card-body::-webkit-scrollbar {
