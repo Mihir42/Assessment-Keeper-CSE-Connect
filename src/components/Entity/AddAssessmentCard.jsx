@@ -6,9 +6,10 @@ import APIWrapper from '../../utils/API';
 
 export default function AddAssessmentCard() {
 	// Initialisation -----------------------------------------------
-	const defaultPublishDate = new Date().toISOString().slice(0, -8);
+	const defaultPublishDate = new Date().toISOString().slice(0,-1, 0);
 	const defaultSubmissionDate = new Date(new Date().setMonth(new Date().getMonth() + 1)).toISOString().slice(0, -8);
 	const defaultFeedbackDate = new Date(new Date().setMonth(new Date().getMonth() + 2)).toISOString().slice(0, -8);
+	const testingDate = new Date('2022-10-24T00:00:00.000').toJSON().toString();
 	const conformance = {
 		html2js : {
 			AssessmentID: (value) => (value === 0 ? null : parseInt(value)),
@@ -47,11 +48,11 @@ export default function AddAssessmentCard() {
 		AssessmentID: 0,
 		AssessmentName: null,
 		AssessmentPercentage: 0,
-		AssessmentPublishdate: defaultPublishDate,
+		AssessmentPublishdate: testingDate,
 		AssessmentSubmissiondate: defaultSubmissionDate,
 		AssessmentFeedbackdate: defaultFeedbackDate,
 		AssessmentBriefURL: null,
-		AssessmentModuleID: 0,
+		AssessmentModuleID: 1,
 		AssessmentAssessmenttypeID: 0,
 		AssessmentModuleName: null,
 		AssessmentAssessmenttypeDescription: null,
@@ -114,7 +115,7 @@ export default function AddAssessmentCard() {
 							<input type="Number" className="input-field" id="AssessmentPercentage" name="AssessmentPercentage" value={conformance.js2html['AssessmentPercentage'](assessment.AssessmentPercentage)} onChange={handleChange} />
 
 							<label htmlFor="AssessmentPublishdate">Publish Date:</label>
-							<input type="datetime-local" className="input-field" id="AssessmentPublishdate" name="AssessmentPublishdate" value={conformance.js2html['AssessmentPublishdate'](assessment.AssessmentPublishdate)} onChange={handleChange} />
+							<input type="text" className="input-field" id="AssessmentPublishdate" name="AssessmentPublishdate" value={conformance.js2html['AssessmentPublishdate'](assessment.AssessmentPublishdate)} onChange={handleChange} />
 
 							<label htmlFor="AssessmentSubmissiondate">Submission Date:</label>
 							<input type="datetime-local" className="input-field" id="AssessmentSubmissiondate" name="AssessmentSubmissiondate" value={conformance.js2html['AssessmentSubmissiondate'](assessment.AssessmentSubmissiondate)} onChange={handleChange} />
