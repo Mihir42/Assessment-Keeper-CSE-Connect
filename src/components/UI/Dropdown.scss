@@ -39,13 +39,16 @@ li > a:hover {
 .dropdown-item {
   display: block;
   min-width: 20rem;
-  padding: 0.25rem 0.25rem;
+  padding: 0.25rem;
   clear: both;
   font-weight: 400;
   color: #212529;
   text-decoration: none;
   border: 0;
   text-align: left;
+  border-radius: 8px;
+  border: 1px solid black;
+  margin-bottom: 0.5rem;
 
   & a:hover {
     background-color: black;
