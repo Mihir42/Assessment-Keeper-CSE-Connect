@@ -6,7 +6,7 @@ import APIWrapper from '../../utils/API';
 
 export default function AddAssessmentCard() {
 	// Initialisation -----------------------------------------------
-	const defaultPublishDate = new Date().toISOString().slice(0,-1, 0);
+	const defaultPublishDate = new Date().toISOString().slice(0, -1, 0);
 	const defaultSubmissionDate = new Date(new Date().setMonth(new Date().getMonth() + 1)).toISOString().slice(0, -8);
 	const defaultFeedbackDate = new Date(new Date().setMonth(new Date().getMonth() + 2)).toISOString().slice(0, -8);
 	const testingDate = new Date('2022-10-24T00:00:00.000').toJSON().toString();
@@ -139,8 +139,9 @@ export default function AddAssessmentCard() {
 
 							<label htmlFor="AssessmentAssessmenttypeDescription">Description:</label>
 							<input type="text" className="input-field" id="AssessmentAssessmenttypeDescription" name="AssessmentAssessmenttypeDescription" value={conformance.js2html['AssessmentAssessmenttypeDescription'](assessment.AssessmentAssessmenttypeDescription)} onChange={handleChange}/>
+							&nbsp;
+							<button className="btn btn-secondary" type="submit" onClick={(e) => handleSubmit(e)}>Submit</button>
 						</div>
-						<button className="btn" type="submit" onClick={handleSubmit}>Submit</button>
 					</div>
 				</div>
 			</Card>

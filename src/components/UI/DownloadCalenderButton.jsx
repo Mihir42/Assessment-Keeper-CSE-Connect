@@ -34,7 +34,7 @@ END:VCALENDAR
 	}
 
 	return (
-		<button className="btn" onClick={() => downloadCalenderFile()}>Download Calender file</button>
+		<button className="btn btn-secondary" onClick={() => downloadCalenderFile()}>Download Calender file</button>
 	);
 }
 

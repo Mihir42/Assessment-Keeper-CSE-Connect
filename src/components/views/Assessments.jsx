@@ -14,7 +14,7 @@ export default function Assessments() {
 
 	const fetchAssessment = async () => {
 		const response = await API.get(`assessments/${location.pathname.substr(13, location.pathname.length - 1)}`);
-		if (response.message == 'Specified endpoint not found') return;
+		if (response.message == 'Specified endpoint not found') return navigate(-1);
 		setAssessment(response[0]);
 	};
 
@@ -31,7 +31,7 @@ export default function Assessments() {
 					<p>Description: {assessment.AssessmentAssessmenttypeDescription}</p>
 					<p>Module: {assessment.AssessmentModuleName}</p>
 					<p>Publish date: {new Date(assessment.AssessmentPublishdate).toLocaleString()}</p>
-					<a href={assessment.AssessmentBriefURL}>{assessment.AssessmentBriefURL}</a>
+					<p>Canvas URL: <a href={assessment.AssessmentBriefURL}>{assessment.AssessmentBriefURL}</a></p>
 					<DownloadCalenderButton assessment={assessment}/>
 				</>
 			</Card>

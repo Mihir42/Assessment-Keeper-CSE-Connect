@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
-import { Accordion, DownloadCalenderButton } from '../UI';
+import { Accordion } from '../UI';
 import { useState, useContext } from 'react';
 import { UserContext } from '../../App.jsx';
 import APIWrapper from '../../utils/API';
+import { NavLink } from 'react-router-dom';
 
 export default function StudentAssessmentAccordion({ assessment, isFavourite }) {
 	const [active, setActive] = useState(false);
@@ -48,7 +49,7 @@ export default function StudentAssessmentAccordion({ assessment, isFavourite }) 
 				<>
 					<p>{assessment.AssessmentAssessmenttypeDescription}</p>
 					<p>Page URL: <a href={assessment.AssessmentBriefURL}>{assessment.AssessmentBriefURL}</a></p>
-					<DownloadCalenderButton assessment={assessment}/>
+					<NavLink to={`/assessments/${assessment.AssessmentID}`}>Go To</NavLink>
 				</>
 			</Accordion>
 		</>
