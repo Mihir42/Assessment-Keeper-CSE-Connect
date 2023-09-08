@@ -14,6 +14,7 @@ export default function Assessments() {
 
 	const fetchAssessment = async () => {
 		const response = await API.get(`assessments/${location.pathname.substr(13, location.pathname.length - 1)}`);
+		console.log(response)
 		if (response.message == 'Specified endpoint not found') return navigate(-1);
 		setAssessment(response[0]);
 	};

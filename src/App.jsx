@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { createContext, useState } from 'react';
 import { Modules, Login} from './components/views';
 import AddAssessments from './components/views/AddAssessments';
+import Assessments from './components/views/Assessments';
 const UserContext = createContext();
 import './App.scss';
 
@@ -16,6 +17,7 @@ function App() {
 					<Route path="/" element={<Login setUser={setUser} />} />
 					<Route path="/modules" element={<Modules />} />
 					<Route path="/addAssessments" element={<AddAssessments />}/>
+					<Route path="/assessments/*" element={<Assessments />}/>
 				</Routes>
 			</BrowserRouter>
 		</UserContext.Provider>
