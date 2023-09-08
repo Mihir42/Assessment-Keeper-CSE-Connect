@@ -6,10 +6,14 @@ import APIWrapper from '../../utils/API';
 
 export default function AddAssessmentCard() {
 	// Initialisation -----------------------------------------------
-	const defaultPublishDate = new Date().toISOString().slice(0, -1, 0);
+	const defaultPublishDate = new Date().toISOString();
 	const defaultSubmissionDate = new Date(new Date().setMonth(new Date().getMonth() + 1)).toISOString().slice(0, -8);
 	const defaultFeedbackDate = new Date(new Date().setMonth(new Date().getMonth() + 2)).toISOString().slice(0, -8);
-	const testingDate = new Date('2022-10-24T00:00:00.000').toJSON().toString();
+
+	const jsonDate = Date.now();
+	const adjustedTimeInMS = jsonDate + (1000 * 60 * 60 * 24 * 3);
+	const adjustedDate = new Date(adjustedTimeInMS).toISOString().slice(0, -3);
+
 	const conformance = {
 		html2js : {
 			AssessmentID: (value) => (value === 0 ? null : parseInt(value)),
@@ -48,7 +52,7 @@ export default function AddAssessmentCard() {
 		AssessmentID: 0,
 		AssessmentName: null,
 		AssessmentPercentage: 0,
-		AssessmentPublishdate: testingDate,
+		AssessmentPublishdate: defaultPublishDate,
 		AssessmentSubmissiondate: defaultSubmissionDate,
 		AssessmentFeedbackdate: defaultFeedbackDate,
 		AssessmentBriefURL: null,
@@ -58,6 +62,7 @@ export default function AddAssessmentCard() {
 		AssessmentAssessmenttypeDescription: null,
 	});
 	const [modules, setModules] = useState([]);
+
 
 	const apiPost = async (endpoint, record) => {
 		// Build request object
@@ -84,7 +89,11 @@ export default function AddAssessmentCard() {
 	// Handlers -----------------------------------------------------
 	const handleChange = (event) => {
 		const { name, value } = event.target;
-		setAssessment({ ...assessment, [name]: conformance.html2js[name](value) });
+		if(name == 'Balls') {
+			setAssessment({ ...assessment, [name]: value.split('T')[0] });
+		} else {
+			setAssessment({ ...assessment, [name]: conformance.html2js[name](value) });
+		}
 	};
 
 	const handleSubmit = async () => {
