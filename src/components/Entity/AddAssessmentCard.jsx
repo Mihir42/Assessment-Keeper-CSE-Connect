@@ -112,47 +112,55 @@ export default function AddAssessmentCard() {
 		<>
 			<Layout />
 			<Card title="Add an Assessment">
-				<div className="loginCard">
-					<div className="row">
-						<div className="col-lg-6">
-
+				<div className="row">
+					<div className="col-lg-6">
+						<div className="input-group">
 							<label htmlFor="AssessmentID">Assessment ID</label>
 							<input type="Number" className="input-field" id="AssessmentID" name="AssessmentID" value={conformance.js2html['AssessmentID'](assessment.AssessmentID)} onChange={handleChange} />
-
+						</div>
+						<div className="input-group">
 							<label htmlFor="AssessmentName">Name: </label>
 							<input type="text" className="input-field" id="AssessmentName" name="AssessmentName" value={conformance.js2html['AssessmentName'](assessment.AssessmentName)} onChange={handleChange} />
-
+						</div>
+						<div className="input-group">
 							<label htmlFor="AssessmentPercentage">Percentage</label>
 							<input type="Number" className="input-field" id="AssessmentPercentage" name="AssessmentPercentage" value={conformance.js2html['AssessmentPercentage'](assessment.AssessmentPercentage)} onChange={handleChange} />
-
+						</div>
+						<div className="input-group">
 							<label htmlFor="AssessmentPublishdate">Publish Date:</label>
 							<input type="datetime-local" className="input-field" id="AssessmentPublishdate" name="AssessmentPublishdate" value={conformance.js2html['AssessmentPublishdate'](assessment.AssessmentPublishdate)} onChange={handleChange} />
-
+						</div>
+						<div className="input-group">
 							<label htmlFor="AssessmentSubmissiondate">Submission Date:</label>
 							<input type="datetime-local" className="input-field" id="AssessmentSubmissiondate" name="AssessmentSubmissiondate" value={conformance.js2html['AssessmentSubmissiondate'](assessment.AssessmentSubmissiondate)} onChange={handleChange} />
-
+						</div>
+						<div className="input-group">
 							<label htmlFor="AssessmentFeedbackdate">Feedback Date:</label>
 							<input type="datetime-local" className="input-field" id="AssessmentFeedbackdate" name="AssessmentFeedbackdate" value={conformance.js2html['AssessmentFeedbackdate'](assessment.AssessmentFeedbackdate)} onChange={handleChange} />
 						</div>
-						<div className="col-lg-6">
+					</div>
+					<div className="col-lg-6">
+						<div className="input-group">
 							<label htmlFor="AssessmentBriefURL">Brief URL:</label>
 							<input type="text" className="input-field" id="AssessmentBriefURL" name="AssessmentBriefURL" value={conformance.js2html['AssessmentBriefURL'](assessment.AssessmentBriefURL)} onChange={handleChange} />
-
+						</div>
+						<div className="input-group">
 							<label htmlFor="AssessmentModuleID">Module:</label>
 							<select className="input-field" id="AssessmentModuleID" name="AssessmentModuleID" value={conformance.js2html['AssessmentModuleID'](assessment.AssessmentModuleID)} onChange={handleChange}>
 								{modules.map(m => (
 									<option value={m.ModuleID} key={m.ModuleID}>{m.ModuleName}</option>
 								))}
 							</select>
-
+						</div>
+						<div className="input-group">
 							<label htmlFor="AssessmentAssessmenttypeID">Type ID:</label>
 							<input type="Number" className="input-field" id="AssessmentAssessmenttypeID" name="AssessmentAssessmenttypeID" value={conformance.js2html['AssessmentAssessmenttypeID'](assessment.AssessmentAssessmenttypeID)} onChange={handleChange} />
-
-							<label htmlFor="AssessmentAssessmenttypeDescription">Description:</label>
-							<input type="text" className="input-field" id="AssessmentAssessmenttypeDescription" name="AssessmentAssessmenttypeDescription" value={conformance.js2html['AssessmentAssessmenttypeDescription'](assessment.AssessmentAssessmenttypeDescription)} onChange={handleChange}/>
-							&nbsp;
-							<button className="btn btn-secondary" type="submit" onClick={(e) => handleSubmit(e)}>Submit</button>
 						</div>
+						<div className="input-group">
+							<label htmlFor="AssessmentAssessmenttypeDescription">Description:</label>
+							<textarea type="text" className="input-field" id="AssessmentAssessmenttypeDescription" name="AssessmentAssessmenttypeDescription" value={conformance.js2html['AssessmentAssessmenttypeDescription'](assessment.AssessmentAssessmenttypeDescription)} onChange={handleChange}></textarea>
+						</div>
+						<button className="btn btn-secondary" type="submit" onClick={(e) => handleSubmit(e)}>Submit</button>
 					</div>
 				</div>
 			</Card>
