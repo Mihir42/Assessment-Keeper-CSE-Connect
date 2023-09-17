@@ -17,7 +17,6 @@ export default function Assessments({ activeModuleId = 0, isModuleLeader = false
 	const [favourites, setFavourites] = useState([]);
 	const [showModal, setShowModal] = useState(false);
 	const [assessmentName, setAssessmentName] = useState(null);
-	const [assessmentDescription, setAssessmentDescription] = useState(null);
 
 	const getAssessments = async (returnValues = false) => {
 		try {
@@ -81,13 +80,6 @@ export default function Assessments({ activeModuleId = 0, isModuleLeader = false
 		console.log(assessmentName);
 	};
 
-	function submitAssessment() {
-		// console.log("Assessment button was clicked");
-		setShowModal(true);
-		console.log(showModal);
-	}
-
-
 	// View ----------------------------------------
 	return (
 		<Card title={'Assessment'} leftHand={isModuleLeader ? <button type="submit" className="btn addAssessmentButton" onClick={() => setShowModal(true)}>
@@ -95,7 +87,7 @@ export default function Assessments({ activeModuleId = 0, isModuleLeader = false
 		</button> : null}
 		>
 			<>
-				<div className="row" style={{ margin: '0px 5px', display: 'flex', justifyContent: 'space-between' }}>
+				<div style={{ margin: '0px 5px', display: 'flex', justifyContent: 'space-between' }}>
 					<input type="text" className="input-field" placeholder="Search" onChange={(e) => handleFilter(e)}/>
 					<select name="sort" id="sortSelect" className="input-field" onChange={(e) => handleSort(e)} style={{ marginRight: '35px' }}>
 						<option value="relevant">Relevant</option>

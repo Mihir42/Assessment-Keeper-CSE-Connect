@@ -20,8 +20,8 @@ export default function AddAssessmentCard() {
 			AssessmentName: (value) => (value === '' ? null : value),
 			AssessmentPercentage: (value) => (value === 0 ? null : parseInt(value)),
 			AssessmentPublishdate: (value) => (value === null ? null : new Date(value)),
-			AssessmentSubmissiondate: (value) => (value === null  ? null : new Date(value)),
-			AssessmentFeedbackdate: (value) => (value  === null  ? null : new Date(value)),
+			AssessmentSubmissiondate: (value) => (value === null ? null : new Date(value)),
+			AssessmentFeedbackdate: (value) => (value === null ? null : new Date(value)),
 			AssessmentBriefURL: (value) => (value === '' ? null : value),
 			AssessmentModuleID: (value) => (value === 0 ? null : parseInt(value)),
 			AssessmentAssessmenttypeID: (value) => (value === 0 ? null : parseInt(value)),
@@ -68,7 +68,7 @@ export default function AddAssessmentCard() {
 		record.AssessmentFeedbackdate = new Date(record.AssessmentFeedbackdate).toISOString();
 		record.AssessmentPublishdate = new Date(record.AssessmentPublishdate).toISOString();
 		record.AssessmentSubmissiondate = new Date(record.AssessmentSubmissiondate).toISOString();
-		console.log(record.AssessmentFeedbackdate)
+		console.log(record.AssessmentFeedbackdate);
 
 		// Build request object
 		const request = {
@@ -94,7 +94,7 @@ export default function AddAssessmentCard() {
 	// Handlers -----------------------------------------------------
 	const handleChange = (event) => {
 		const { name, value } = event.target;
-		console.log(name, value)
+		console.log(name, value);
 		setAssessment({ ...assessment, [name]: conformance.html2js[name](value) });
 	};
 

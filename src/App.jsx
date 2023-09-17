@@ -1,8 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { createContext, useState } from 'react';
-import { Modules, Login} from './components/views';
-import AddAssessments from './components/views/AddAssessments';
-import Assessments from './components/views/Assessments';
+import { Modules, Login } from './components/views';
+import { AddAssessments, Assessments } from './components/views';
 const UserContext = createContext();
 import './App.scss';
 

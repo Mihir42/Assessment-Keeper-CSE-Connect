@@ -56,16 +56,18 @@ export default function LoginCard({ title, setUser }) {
 			<form onSubmit={(e) => handleSubmit(e)}>
 				<h4 className="loginCard-header">{title}</h4>
 				<div className="loginCard-body">
-					<label htmlFor="1">
+					<label htmlFor="userInput">
 						Username
 					</label>
-					<input type="text" id="1" name="LoginUsername" value={conformance.js2html['LoginUsername'](loginAttempt.LoginUsername)} onChange={handleChange } autoComplete="false" />
-					<label htmlFor="2">
+					<input type="text" id="userInput" name="LoginUsername" value={conformance.js2html['LoginUsername'](loginAttempt.LoginUsername)} onChange={handleChange } autoComplete="false" />
+					<label htmlFor="pwdInput">
 						Password
 					</label>
-					<input type="password" id="2" name="LoginPassword" value={conformance.js2html['LoginPassword'](loginAttempt.LoginPassowrd)} onChange={handleChange} />
-					<button type="submit" className="cancelButton" >Cancel</button>
-					<button type="button" className="loginButton" onClick={() => handleSubmit()}>Login</button>
+					<input type="password" id="pwdInput" name="LoginPassword" value={conformance.js2html['LoginPassword'](loginAttempt.LoginPassowrd)} onChange={handleChange} />
+					<div style={{ display: 'flex', justifyContent: 'space-between' }}>
+						<button type="submit" className="cancelButton">Cancel</button>
+						<button type="button" className="loginButton" onClick={() => handleSubmit()}>Login</button>
+					</div>
 				</div>
 			</form>
 		</div>

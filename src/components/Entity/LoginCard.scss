@@ -1,61 +1,65 @@
 .loginCard {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    min-height: 300px;
-    max-width: 60%;
-    word-wrap: break-word;
-    background-color: #fff;
-    background-clip: border-box;
-    border: 1px solid rgba(0,0,0,.125);
-    border-radius: 0.25rem;
-    margin: 50px auto;
-    padding: 16px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 300px;
+  max-width: 60%;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: 0.25rem;
+  margin: 50px auto;
+  padding: 16px;
+}
+
+@media screen and (max-width: 768px) {
+  .loginCard {
+    margin: 0;
+    max-width: calc(100% - 1px);
+    min-width: calc(100% - 1px);
+    padding: 0;
+  }
 }
 
 .loginCard-header {
-    padding: 0.5rem 1rem;
-    margin-bottom: 0;
-    background-color: white;
-    border-bottom: 1px solid rgb(0,0,0,0.125);
+  padding: 0.5rem 1rem;
+  margin-bottom: 0;
+  background-color: white;
+  border-bottom: 1px solid rgb(0,0,0,0.125);
 }
 
 .loginCard-body {
+  label, input {
+    font-size: 90%;
+    display: block;
+    width: 100%;
+    margin-top: 24px;
+  }
 
-    label, input {
-        font-size: 90%;
-        display: block;
-        width: 100%;
-        margin-top: 24px;
+  input {
+    height: 30px;
+    max-width: 99%;
+    padding: 1px;
+    margin: 10px 0;
+    font-size: 100%;
+    border-radius: 0px;
+    border: 1px solid rgb(0,0,0,0.125);
+    background: white;
+  }
 
-    }
+  button {
+    width: 35%;
+    height: 40px;
+    margin: 10px;
+    font-size: 90%;
+    border: 1px solid rgb(0, 0, 0,0.125);
+    background-color: white;
+  }
 
-    input {
-        height: 30px;
-        width: 100%;
-        padding:1px;
-        margin: 10px 0;
-        font-size: 100%;
-        border-radius: 0px;
-        border: 1px solid rgb(0,0,0,0.125);
-        background: white;
-    }
-
-    button {
-        width: 35%;
-        height: 40px;
-        margin: 10px;
-        font-size: 90%;
-        border: 1px solid rgb(0, 0, 0,0.125);
-        background-color: white;
-
-    }
-
-    .loginButton {
-        margin-left: 190px;
-        border: 0px solid rgb(0, 0, 0);
-        color: white;
-        background-color: #ab1516;
-    }
-
+  .loginButton {
+    border: 0px solid rgb(0, 0, 0);
+    color: white;
+    background-color: #ab1516;
+  }
 }
