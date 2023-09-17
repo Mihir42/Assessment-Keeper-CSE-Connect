@@ -5,17 +5,18 @@ import { UserContext } from '../../App.jsx';
 import APIWrapper from '../../utils/API';
 import { NavLink } from 'react-router-dom';
 
-export default function StudentAssessmentAccordion({ assessment, isFavourite }) {
+export default function StudentAssessmentAccordion({ assessment, favourites, setFavourites }) {
 	const [active, setActive] = useState(false);
 	const user = useContext(UserContext);
 	const API = new APIWrapper();
 
 	async function updateFavourite() {
+		const isFavourite = favourites.find(f => f.FavouriteLikedID == assessment.AssessmentID);
 		try {
 			if (isFavourite) {
 				// need to delete
 				await API.delete(`favourites/${isFavourite.FavouriteID}`);
-				alert(`Deleting favourite with ID: ${isFavourite.FavouriteID}`);
+				setFavourites([...favourites.filter(f => f.FavouriteID !== isFavourite.FavouriteID)]);
 			} else {
 				// Add
 				await API.post('favourites/', {
@@ -24,7 +25,7 @@ export default function StudentAssessmentAccordion({ assessment, isFavourite }) 
 					FavouriteLikedID: assessment.AssessmentID,
 					FavouriteCategory: 'Assessments',
 				});
-				alert('Adding favourite.');
+				setFavourites([...favourites, { FavouriteLikerID: user.UserID, FavouriteLikedID: assessment.AssessmentID }]);
 			}
 		} catch (err) {
 			console.log(err);
@@ -39,7 +40,7 @@ export default function StudentAssessmentAccordion({ assessment, isFavourite }) 
 				<button className={`accordion-button row ${active ? '' : 'collapsed'}`} type="button" onClick={() => setActive(!active)}>
 					<div className="col-sm-8">
 						<button className="btn" onClick={() => updateFavourite()}>
-							{isFavourite ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i className="fa fa-star-o"></i>}
+							{favourites.find(f => f.FavouriteLikedID == assessment.AssessmentID) ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i className="fa fa-star-o"></i>}
 						</button>
 						{assessment.AssessmentName}
 					</div>
@@ -57,12 +58,13 @@ export default function StudentAssessmentAccordion({ assessment, isFavourite }) 
 }
 
 StudentAssessmentAccordion.propTypes = {
-	isFavourite: PropTypes.shape({
+	favourites: PropTypes.arrayOf(PropTypes.shape({
 		FavouriteID: PropTypes.number,
 		FavouriteLikerID: PropTypes.number,
 		FavouriteLikedID: PropTypes.number,
 		FavouriteCategory: PropTypes.string,
-	}),
+	})),
+	setFavourites: PropTypes.func,
 	assessment: PropTypes.shape({
 		AssessmentID: PropTypes.number,
 		AssessmentName: PropTypes.string,

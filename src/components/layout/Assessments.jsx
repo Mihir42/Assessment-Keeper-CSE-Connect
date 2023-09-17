@@ -105,7 +105,7 @@ export default function Assessments({ activeModuleId = 0, isModuleLeader = false
 							// TODO: REPLACE MATH.RANDOM with actual data
 							return isModuleLeader ?
 								<LeaderAssessmentAccordion assessment={assessment} key={assessment.AssessmentID} />
-								: <StudentAssessmentAccordion assessment={assessment} isFavourite={favourites.find(f => f.FavouriteLikedID == assessment.AssessmentID)} key={assessment.AssessmentID} />;
+								: <StudentAssessmentAccordion assessment={assessment} favourites={favourites} setFavourites={setFavourites} key={assessment.AssessmentID} />;
 						})}
 					</>
 				}
